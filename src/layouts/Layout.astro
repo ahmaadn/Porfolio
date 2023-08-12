@@ -1,0 +1,38 @@
+---
+import MainHead from "../components/MainHead.astro";
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import {
+  BackgroundImage,
+  ImageSupportDetection,
+} from "astro-imagetools/components";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <MainHead title={title} />
+    <ImageSupportDetection />
+  </head>
+  <body class="bg-secondary-950">
+    <Navbar />
+    <BackgroundImage
+      src="/assets/backgrounds/bg-main.jpeg"
+      alt="Background-Image"
+      backgroundSize="cover"
+      breakpoints={[200, 400, 800, 1600]}
+      quality={90}
+    >
+      <div class="flex flex-col gap-20 pt-20 relative">
+        <slot />
+        <Footer />
+      </div>
+    </BackgroundImage>
+  </body>
+</html>

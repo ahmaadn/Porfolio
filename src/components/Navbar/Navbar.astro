@@ -1,0 +1,88 @@
+---
+import { SITE_TITLE } from "../../consts";
+import NavbarBurger from "./NavbarBurger.astro";
+import NavbarItem from "./NavbarItem.astro";
+import Logo from "../Logo.astro";
+import Icon from "astro-icon";
+
+const navLink: { label: string; href: string }[] = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/me" },
+  { label: "Project", href: "/project" },
+];
+
+const sosialLink: { label: string; icon: string; href: string }[] = [
+  { label: "github", icon: "carbon:logo-github", href: "/" },
+  { label: "github", icon: "carbon:logo-github", href: "/" },
+  { label: "github", icon: "carbon:logo-github", href: "/" },
+];
+---
+
+<nav
+  id="navbar"
+  class="absolute top-0 left-0 right-0 z-10 flex items-center w-full py-1 border-b border-gray-200 min-h-54 bg-secondary md:py-3 bg-opacity-5 backdrop-blur-lg border-opacity-10"
+>
+  <div class="container md:flex">
+    <div class="flex justify-between w-full">
+      <a class="flex items-center" href="/">
+        <Logo />
+        <span class="ml-1 text-2xl font-bold text-white">{SITE_TITLE}</span>
+      </a>
+      <NavbarBurger />
+    </div>
+    <div id="navbar-items" class="m-auto max-md:hidden [&.active]:block">
+      <div class="py-2 md:flex md:items-center">
+        <ul class="mr-3 text-right md:flex">
+          {
+            navLink.map(({ label, href }) => (
+              <li class="my-2 md:my-0">
+                <NavbarItem href={href}> {label} </NavbarItem>
+              </li>
+            ))
+          }
+        </ul>
+        <div
+          class="flex items-center border-t border-primary md:border-t-0 md:border-l md:pl-5"
+        >
+          {
+            sosialLink.map(({ label, icon, href }) => (
+              <a
+                href={href}
+                class="mt-2 ml-4 text-gray-300 hover:text-primary-100 first:ml-0 md:mt-0"
+              >
+                <span class="sr-only"> {label} </span>
+                <Icon name={icon} class="w-6 h-6" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  var navbar = document.querySelector("#navbar");
+  var burger = document.querySelector("#burger");
+  var navbarItems = document.querySelector("#navbar-items");
+
+  // Navbar fixed
+  window.onscroll = function () {
+    const fixNav = navbar.offsetTop;
+
+    if (window.pageYOffset > fixNav) {
+      navbar?.classList.remove("absolute");
+      navbar?.classList.add("fixed");
+    } else {
+      navbar?.classList.remove("fixed");
+      navbar?.classList.add("absolute");
+    }
+  };
+
+  if (burger) {
+    burger.addEventListener("click", function () {
+      burger.classList.toggle("active");
+      navbarItems.classList.toggle("active");
+    });
+  }
+</script>
