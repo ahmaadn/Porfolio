@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title, description = "" } = Astro.props;
+import { ImageSupportDetection } from "astro-imagetools/components";
 ---
 
 <!-- Global Metadata -->
@@ -25,3 +26,5 @@ const { title, description = "" } = Astro.props;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+
+<ImageSupportDetection />

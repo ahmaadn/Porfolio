@@ -1,0 +1,31 @@
+---
+import { BackgroundImage } from "astro-imagetools/components";
+
+interface Props {
+   src?: string;
+}
+
+const { src = "/assets/backgrounds/bg-home.jpeg" } = Astro.props;
+---
+
+<BackgroundImage
+   src={src}
+   tag="div"
+   preload="webp"
+   backgroundSize="cover"
+   breakpoints={[400, 800, 1400]}
+   quality={100}
+>
+   <div class="noise">
+      <slot />
+   </div>
+</BackgroundImage>
+
+<style>
+   .noise {
+      min-height: 100%;
+      isolation: isolate;
+      background: url("/assets/backgrounds/noise.png") top center/220px repeat;
+      background-blend-mode: overlay;
+   }
+</style>
