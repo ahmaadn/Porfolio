@@ -1,0 +1,4 @@
+[*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}]
+charset = utf-8
+indent_style = space
+indent_size = 3
