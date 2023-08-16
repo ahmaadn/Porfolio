@@ -1,9 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Page from "../layouts/Page.astro";
 import { Picture } from "astro-imagetools/components";
 ---
 
-<Layout title="home">
+<Page>
    <div class="container">
       <header class="flex flex-col gap-10 lg:flex-row lg:py-20 lg:items-center">
          <div class="mt-10 lg:w-3/5 lg:mt-0">
@@ -34,7 +34,7 @@ import { Picture } from "astro-imagetools/components";
          </div>
       </header>
    </div>
-</Layout>
+</Page>
 
 <style>
    .grid-background {

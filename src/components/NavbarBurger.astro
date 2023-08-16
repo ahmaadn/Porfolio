@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+   _class?: string;
+}
+
+const { _class = "", ...props } = Astro.props;
+---
+
+<button
+   type="button"
+   id="burger"
+   class=`flex flex-col items-center justify-center md:hidden group h-6 w-6 ${_class}`
+   {...props}
+>
+   <span
+      class="transition duration-300 ease-in-out w-4 h-[1px] block bg-base-100 my-0.5 -translate-x-1/2 group-[.active]:translate-x-1/2 group-[.active]:bg-primary"
+   ></span>
+   <span class="w-4 h-[1px] block bg-base-100 my-0.5"></span>
+   <span
+      class="transition duration-300 ease-in-out w-4 h-[1px] block bg-base-100 my-0.5 -translate-x-1/2 group-[.active]:translate-x-1/2 group-[.active]:bg-primary"
+   ></span>
+</button>

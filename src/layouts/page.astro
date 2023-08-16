@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Background from "../components/Background.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+interface Props {
+   title?: string;
+   description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+   <Background>
+      <main class="h-screen flex px-5">
+         <div
+            class="bg-neutral w-full bg-opacity-50 border rounded-md border-gray-700 relative flex flex-col my-6"
+         >
+            <Navbar />
+            <div id="content" class="h-full overflow-y-auto">
+               <slot />
+            </div>
+            <Footer />
+         </div>
+      </main>
+   </Background>
+</BaseLayout>
