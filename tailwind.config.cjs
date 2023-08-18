@@ -10,11 +10,11 @@ module.exports = {
       },
       extend: {
          fontFamily: {
-            sans: ["Menlo Regular", ...defaultTheme.fontFamily.sans],
+            sans: ["Noto Sans Mono", ...defaultTheme.fontFamily.sans],
          },
          colors: {
             primary: "#FFC300",
-            secondary: "#003566",
+            secondary: "#023e8a",
             neutral: "#000814",
             base: {
                100: "#EEF0F2"
