@@ -20,7 +20,7 @@ const navLink: { label: string; href: string }[] = [
    >
       <a
          href="/"
-         class="text-normal font-bold text-base-100 flex items-center gap-x-1"
+         class="text-normal font-bold text-base-100 inline-flex items-center gap-x-1 md:w-48 justify-center"
       >
          <Logo />
          <span> {SITE_TITLE}</span>
@@ -56,12 +56,18 @@ const navLink: { label: string; href: string }[] = [
 </nav>
 <div
    id="nav-dialog"
-   class="fixed inset-0 z-20 flex justify-end group translate-x-full aria-expanded:translate-x-0 transform ease-in-out duration-300"
+   class="fixed inset-0 z-20 flex justify-end group aria-hidden:hidden transition-all"
    aria-expanded="false"
    hidden
 >
-   <div id="nav-dialog-overlay" class="fixed inset-0"></div>
-   <div class="w-2/3 bg-neutral z-50 relative border-l border-gray-700">
+   <label
+      id="nav-dialog-overlay"
+      class="fixed inset-0 group-aria-expanded:bg-black/50"
+   >
+   </label>
+   <div
+      class="w-2/3 bg-neutral relative border-l border-gray-700 translate-x-full group-aria-expanded:translate-x-0 transform ease-in-out duration-300 group-aria-expanded:ease-in-out"
+   >
       <nav
          class="p-8 flex items-center flex-col text-base-100 font-bold relative"
       >
@@ -110,6 +116,9 @@ const navLink: { label: string; href: string }[] = [
    const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
       if (e.matches) {
          openNavbar(false);
+         navDialog.setAttribute("aria-hidden", "true");
+      } else {
+         navDialog.setAttribute("aria-hidden", "false");
       }
    };
    const mediaQueries = window.matchMedia("(min-width: 768px)");
