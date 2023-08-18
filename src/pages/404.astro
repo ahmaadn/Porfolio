@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Background from "../components/Background.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="404">
+   <Background>
+      <main class="h-screen flex px-5">
+         <div
+            class="bg-neutral w-full bg-opacity-50 border rounded-md border-gray-700 relative flex flex-col my-6"
+         >
+            <div
+               id="content"
+               class="h-full overflow-y-auto text-white p-4 lg:flex lg:items-center lg:px-12"
+            >
+               <h1 class="text-center text-[140px] font-bold py-3 lg:w-1/2">
+                  (&#62;_&#60;)
+               </h1>
+               <div class="text-center space-y-2 mt-8 lg:text-left lg:w-1/2">
+                  <h1 class="font-bold text-5xl lg:text-6xl">404</h1>
+                  <h3 class="font-bold text-xl">UH OH! You're lost.</h3>
+                  <p>
+                     The page you are looking for does not exist. How you got
+                     here is a mystery. But you can click the button below to go
+                     back to the homepage.
+                  </p>
+                  <div class="pt-2">
+                     <a
+                        href="/"
+                        class="mt-5 px-3 py-1 text-sm h-5 w-min bg-secondary rounded-full"
+                        >Home</a
+                     >
+                  </div>
+               </div>
+            </div>
+            <Footer error />
+         </div>
+      </main>
+   </Background>
+</BaseLayout>
