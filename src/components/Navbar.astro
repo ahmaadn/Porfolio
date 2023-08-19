@@ -1,117 +1,135 @@
 ---
 import { SITE_TITLE } from "../consts";
 import Logo from "./Logo.astro";
-import Icon from "astro-icon";
 
+import NavbarButton from "./NavbarBurger.astro";
 const navLink: { label: string; href: string }[] = [
-   { label: "Home", href: "/" },
-   { label: "About", href: "/me" },
-   { label: "Project", href: "/project" },
-];
-
-const sosialLink: { label: string; icon: string; href: string }[] = [
-   { label: "github", icon: "carbon:logo-github", href: "/" },
-   { label: "github", icon: "carbon:logo-github", href: "/" },
-   { label: "github", icon: "carbon:logo-github", href: "/" },
+   { label: "_home", href: "/" },
+   { label: "_about", href: "/me" },
+   { label: "_project", href: "/project" },
+   { label: "_contact", href: "/contact" },
 ];
 ---
 
 <nav
-   id="navbar"
-   class="absolute top-0 left-0 right-0 z-10 flex items-center w-full py-1 border-b border-gray-300 min-h-54 bg-secondary-100 md:py-3 bg-opacity-5 backdrop-blur-md border-opacity-10"
+   class="flex items-center w-full border-b border-gray-700 flex-row justify-between"
 >
-   <div class="container md:flex">
-      <div class="flex justify-between w-full">
-         <a class="flex items-center" href="/">
-            <div class="h-54 flex items-center">
-               <Logo />
-            </div>
-            <span class="ml-1 text-2xl font-bold text-white">{SITE_TITLE}</span>
-         </a>
-         <button
-            type="button"
-            id="burger"
-            class="flex flex-col items-center justify-center h-54 w-54 md:hidden group"
+   <div
+      id="brand"
+      class="flex items-center p-3 justify-between w-full md:w-auto border-r border-gray-700"
+   >
+      <a
+         href="/"
+         class="text-normal font-bold text-base-100 inline-flex items-center gap-x-1 md:w-48 justify-center"
+      >
+         <Logo />
+         <span> {SITE_TITLE}</span>
+      </a>
+      <NavbarButton />
+   </div>
+   <ul
+      class="hidden md:flex text-sm font-bold text-base-100 items-center h-full divide-x border-l divide-gray-700 border-gray-700"
+   >
+      {
+         navLink.map(({ label, href }) => (
+            <li class="relative group flex h-full items-center">
+               <a
+                  aria-current={Astro.url.pathname === href}
+                  href={href}
+                  class:list={[
+                     "group-hover:text-primary hover:text-primary block p-3",
+                     {
+                        active:
+                           Astro.url.pathname === href ||
+                           (href !== "/" &&
+                              Astro.url.pathname.startsWith(href)),
+                     },
+                  ]}
+               >
+                  {label}
+               </a>
+               <div class="absolute bottom-0 h-0.5 bg-primary opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:w-full w-0" />
+            </li>
+         ))
+      }
+   </ul>
+</nav>
+<div
+   id="nav-dialog"
+   class="fixed inset-0 z-20 flex justify-end group aria-hidden:hidden transition-all"
+   aria-expanded="false"
+   hidden
+>
+   <label
+      id="nav-dialog-overlay"
+      class="fixed inset-0 group-aria-expanded:bg-black/50"
+   >
+   </label>
+   <div
+      class="w-2/3 bg-neutral relative border-l border-gray-700 translate-x-full group-aria-expanded:translate-x-0 transform ease-in-out duration-300 group-aria-expanded:ease-in-out"
+   >
+      <nav
+         class="p-8 flex items-center flex-col text-base-100 font-bold relative"
+      >
+         <NavbarButton _class="absolute right-0 top-0 h-[54px] w-[54px]" />
+         <h1 class="text-base mb-8">{SITE_TITLE}</h1>
+         <div
+            class="flex flex-col justify-start w-full text-base-100 space-y-2 text-sm"
          >
             {
-               new Array(3)
-                  .fill("")
-                  .map(() => (
-                     <span class="transition duration-300 ease-in-out w-4 h-[1px] block bg-gray-300 my-0.5 odd:-translate-x-1/2 group-[.active]:odd:translate-x-1/2 group-[.active]:odd:bg-primary" />
-                  ))
+               navLink.map(({ label, href }) => (
+                  <a href={href} class="hover:text-primary">
+                     {label}
+                  </a>
+               ))
             }
-         </button>
-      </div>
-      <div id="navbar-items" class="m-auto max-md:hidden [&.active]:block">
-         <div class="py-2 md:flex md:items-center">
-            <ul class="mr-3 text-right md:flex">
-               {
-                  navLink.map(({ label, href }) => (
-                     <li class="my-2 md:my-0">
-                        <a
-                           aria-current={Astro.url.pathname === href}
-                           href={href}
-                           class:list={[
-                              "text-lg font-bold hover:text-primary md:mx-3 [.active]:text-primary text-gray-300",
-                              {
-                                 active:
-                                    Astro.url.pathname === href ||
-                                    (href !== "/" &&
-                                       Astro.url.pathname.startsWith(href)),
-                              },
-                           ]}
-                        >
-                           {label}
-                        </a>
-                     </li>
-                  ))
-               }
-            </ul>
-            <div
-               class="flex items-center border-t border-primary md:border-t-0 md:border-l md:pl-5"
-            >
-               {
-                  sosialLink.map(({ label, icon, href }) => (
-                     <a
-                        href={href}
-                        class="mt-2 ml-4 text-gray-300 hover:text-primary-100 first:ml-0 md:mt-0"
-                     >
-                        <span class="sr-only"> {label} </span>
-                        <Icon name={icon} class="w-6 h-6" />
-                     </a>
-                  ))
-               }
-            </div>
          </div>
-      </div>
+      </nav>
    </div>
-</nav>
+</div>
 
 <script>
-   const btn = document.querySelector("#burger");
-   const nav = document.querySelector("nav");
-   const navbarItems = document.querySelector("#navbar-items");
+   const burgerButton = document.querySelectorAll("#burger");
+   const navDialog = document.getElementById("nav-dialog");
+   const navDialogOverlay = document.getElementById("nav-dialog-overlay");
 
-   window.onscroll = function () {
-      const fixNav = nav.offsetTop;
-
-      if (window.pageYOffset > fixNav) {
-         nav?.classList.remove("absolute");
-         nav?.classList.add("fixed");
-      } else {
-         nav?.classList.remove("fixed");
-         nav?.classList.add("absolute");
-      }
+   const openNavbar = (hidden: boolean) => {
+      navDialog.setAttribute("aria-expanded", hidden ? "true" : "false");
+      navDialog.hidden = !hidden;
+      burgerButton.forEach((btn) => {
+         if (hidden) {
+            btn.classList.add("active");
+         } else {
+            btn.classList.remove("active");
+         }
+      });
    };
 
-   btn.addEventListener("click", function () {
-      btn.classList.toggle("active");
-      navbarItems.classList.toggle("active");
+   burgerButton.forEach((btn) => {
+      btn.addEventListener("click", () => openNavbar(navDialog.hidden));
    });
+
+   navDialogOverlay.addEventListener("click", () =>
+      openNavbar(navDialog.hidden)
+   );
+   // Hide menu button for large screens.
+   const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
+      if (e.matches) {
+         openNavbar(false);
+         navDialog.setAttribute("aria-hidden", "true");
+      } else {
+         navDialog.setAttribute("aria-hidden", "false");
+      }
+   };
+   const mediaQueries = window.matchMedia("(min-width: 768px)");
+   handleViewports(mediaQueries);
+   mediaQueries.addEventListener("change", handleViewports);
 </script>
 
 <style>
-   .icon-navbar {
-      background: linear-gradient(90, #000814, #001c3d, #003566);
+   #nav-dialog[hidden] {
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0;
    }
 </style>

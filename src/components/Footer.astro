@@ -1,14 +1,43 @@
 ---
+import { Icon } from "astro-icon";
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+   error?: boolean;
+}
+
+const { error } = Astro.props;
 ---
 
-<footer class="text-gray-300 py-10 px-10 flex flex-col gap-5 md:flex-row md:justify-between border-t shadow-md items-center border-gray-300 border-opacity-10">
-  <div class="flex flex-col text-center md:flex-row md:gap-3">
-    <p>Powered by <a href="/">Astro</a> and Hosted by <a href="/">Netlify</a></p>
-    <p>&copy; 2023 Ahmad Nur Sahid</p>
-  </div>
-  <div class="text-md flex gap-3 justify-center">
-    <a href="">Github</a>
-    <a href="">Instagram</a>
-    <a href="">Facebook</a>
-  </div>
+<footer
+   class="flex border-t items-center text-base-100 text-xs select-none justify-between border-gray-700 z-10"
+>
+   <div
+      class="flex items-center border-r divide-x border-gray-700 divide-gray-700"
+   >
+      <div
+         class="hidden items-center px-2 py-1 md:flex bg-primary text-white rounded-bl-md"
+      >
+         <Icon name="fluent:remote-16-filled" width="16" />
+      </div>
+      <a href="" class="flex items-center gap-x-1 px-2 py-1 hover:text-primary">
+         <Icon name="ion:git-branch-outline" width="16" />
+         <p>main</p>
+      </a>
+      <div class="hidden items-center px-2 py-1 md:flex">
+         <Icon name="ion:reload-circle-outline" width="16" />
+      </div>
+      <div class:list={["items-center px-2 py-1 gap-x-1 ", error ? "bg-error flex" : "hidden md:flex"]}>
+         <Icon name="ion:alert-circle-outline" width="16" />
+         {error ? <p>Error</p> : <p>0</p> <Icon name="ion:warning-outline" width="16" /><p>0</p>}
+      </div>
+   </div>
+
+   <div
+      class="flex items-center border-l divide-x border-gray-700 divide-gray-700"
+   >
+      <div class="flex items-center px-2 py-1">
+         <p>{SITE_TITLE}</p>
+      </div>
+   </div>
 </footer>

@@ -3,9 +3,10 @@ import { BackgroundImage } from "astro-imagetools/components";
 
 interface Props {
    src?: string;
+   noise?: boolean;
 }
 
-const { src = "/assets/backgrounds/bg-home.jpeg" } = Astro.props;
+const { src = "/assets/backgrounds/bg-home.jpeg", noise } = Astro.props;
 ---
 
 <BackgroundImage
@@ -16,14 +17,14 @@ const { src = "/assets/backgrounds/bg-home.jpeg" } = Astro.props;
    breakpoints={[400, 800, 1400]}
    quality={100}
 >
-   <div class="noise">
-      <slot />
-   </div>
+   {noise && <div class="noise" />}
+   <slot />
 </BackgroundImage>
 
 <style>
    .noise {
-      min-height: 100%;
+      position: absolute;
+      inset: 0;
       isolation: isolate;
       background: url("/assets/backgrounds/noise.png") top center/220px repeat;
       background-blend-mode: overlay;
