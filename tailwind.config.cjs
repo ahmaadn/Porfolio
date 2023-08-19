@@ -11,6 +11,7 @@ module.exports = {
       extend: {
          fontFamily: {
             sans: ["Noto Sans Mono", ...defaultTheme.fontFamily.sans],
+            mono: ["Noto Sans Mono", ...defaultTheme.fontFamily.mono],
          },
          colors: {
             primary: "#FFC300",
