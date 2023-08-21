@@ -62,7 +62,7 @@ const navLink: { label: string; href: string }[] = [
 >
    <label
       id="nav-dialog-overlay"
-      class="fixed inset-0 group-aria-expanded:bg-black/50"
+      class="fixed inset-0 group-aria-expanded:bg-black/50 hidden group-aria-expanded:block"
    >
    </label>
    <div
@@ -131,5 +131,6 @@ const navLink: { label: string; href: string }[] = [
       pointer-events: none;
       overflow: hidden;
       opacity: 0;
+      visibility: hidden;
    }
 </style>
