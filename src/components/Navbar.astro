@@ -1,8 +1,9 @@
 ---
-import { SITE_TITLE } from "../consts";
-import Logo from "./Logo.astro";
-
 import NavbarButton from "./NavbarBurger.astro";
+import NavbarLink from "./NavbarLink.astro";
+import Logo from "./Logo.astro";
+import { SITE_TITLE } from "../consts";
+
 const navLink: { label: string; href: string }[] = [
    { label: "_home", href: "/" },
    { label: "_about", href: "/me" },
@@ -16,11 +17,11 @@ const navLink: { label: string; href: string }[] = [
 >
    <div
       id="brand"
-      class="flex items-center p-3 justify-between w-full md:w-auto border-r border-gray-700"
+      class="flex items-center p-3 justify-between w-full md:w-auto md:border-r border-gray-700"
    >
       <a
          href="/"
-         class="text-normal font-bold text-base-100 inline-flex items-center gap-x-1 md:w-48 justify-center"
+         class="text-normal font-bold text-base-100 inline-flex items-center gap-x-1 md:w-52 justify-center"
       >
          <Logo />
          <span> {SITE_TITLE}</span>
@@ -33,21 +34,12 @@ const navLink: { label: string; href: string }[] = [
       {
          navLink.map(({ label, href }) => (
             <li class="relative group flex h-full items-center">
-               <a
-                  aria-current={Astro.url.pathname === href}
+               <NavbarLink
                   href={href}
-                  class:list={[
-                     "group-hover:text-primary hover:text-primary block p-3",
-                     {
-                        active:
-                           Astro.url.pathname === href ||
-                           (href !== "/" &&
-                              Astro.url.pathname.startsWith(href)),
-                     },
-                  ]}
+                  className="group-hover:text-primary hover:text-primary block p-3"
                >
                   {label}
-               </a>
+               </NavbarLink>
                <div class="absolute bottom-0 h-0.5 bg-primary opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:w-full w-0" />
             </li>
          ))
@@ -71,16 +63,16 @@ const navLink: { label: string; href: string }[] = [
       <nav
          class="p-8 flex items-center flex-col text-base-100 font-bold relative"
       >
-         <NavbarButton _class="absolute right-0 top-0 h-[54px] w-[54px]" />
+         <NavbarButton className="absolute right-0 top-0 h-[54px] w-[54px]" />
          <h1 class="text-base mb-8">{SITE_TITLE}</h1>
          <div
             class="flex flex-col justify-start w-full text-base-100 space-y-2 text-sm"
          >
             {
                navLink.map(({ label, href }) => (
-                  <a href={href} class="hover:text-primary">
+                  <NavbarLink href={href} className="hover:text-primary">
                      {label}
-                  </a>
+                  </NavbarLink>
                ))
             }
          </div>

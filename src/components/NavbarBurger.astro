@@ -2,16 +2,16 @@
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"button"> {
-   _class?: string;
+   className?: string;
 }
 
-const { _class = "", ...props } = Astro.props;
+const { className = "", ...props } = Astro.props;
 ---
 
 <button
    type="button"
    id="burger"
-   class=`flex flex-col items-center justify-center md:hidden group h-6 w-6 ${_class}`
+   class=`flex flex-col items-center justify-center md:hidden group h-6 w-6 ${className}`
    {...props}
 >
    <span
