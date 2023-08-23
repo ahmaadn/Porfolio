@@ -1,7 +1,23 @@
 ---
-import Page from "../layouts/Page.astro";
+import Page from "../layouts/PageLayout.astro";
+import Hero from "../components/Hero.astro";
+import Background from "../components/Background.astro";
 ---
 
-<Page>
-   <div class="h-full"></div>
+<Page title="me">
+   <div class="h-full flex">
+      <div
+         id="sidebar"
+         class="hidden md:block h-full border-r p-3 border-gray-700"
+      >
+         <div class="w-52"></div>
+      </div>
+      <div id="main" class="w-full">
+         <div class="p-8">
+            <Background src="/assets/backgrounds/bg-about.jpg">
+               <Hero title="About" tagline="tentang saya" />
+            </Background>
+         </div>
+      </div>
+   </div>
 </Page>

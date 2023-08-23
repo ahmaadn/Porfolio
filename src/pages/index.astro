@@ -1,5 +1,5 @@
 ---
-import Page from "../layouts/Page.astro";
+import Page from "../layouts/PageLayout.astro";
 import { Picture } from "astro-imagetools/components";
 import { Code } from "astro/components";
 ---
@@ -27,19 +27,25 @@ import { Code } from "astro/components";
          </div>
       </div>
       <div class="flex items-center justify-center lg:w-2/5">
-         <Picture
-            src="/assets/profile_pict.jpg"
-            alt="ahmad nur sahid"
-            width="480"
-            height="480"
-            breakpoints={[400, 800]}
-            preload="webp"
-            attributes={{
-               picture: {
-                  class: "w-[14rem] overflow-hidden rounded-2xl shadow-md shadow-gray-300",
-               },
-            }}
-         />
+         <div class="w-56 lg:w-64 relative">
+            <div
+               class="absolute inset-0 bg-white rounded-xl origin-bottom-left transform -rotate-6"
+            >
+            </div>
+            <Picture
+               src="/assets/profile_pict.jpg"
+               alt="ahmad nur sahid"
+               width="480"
+               height="480"
+               breakpoints={[400, 800]}
+               preload="webp"
+               attributes={{
+                  picture: {
+                     class: "overflow-hidden rounded-xl shadow-md shadow-gray-300",
+                  },
+               }}
+            />
+         </div>
       </div>
    </header>
 </Page>
