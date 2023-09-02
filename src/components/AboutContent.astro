@@ -1,0 +1,35 @@
+---
+interface Props {
+	title: string;
+	subtitle: string;
+	description: string;
+	date: string;
+	url?: string;
+}
+
+const { title, subtitle, description, date, url } = Astro.props;
+---
+
+<div>
+	<span
+		class="inline-flex items-center justify-center px-3 text-xs font-light leading-5 text-white rounded-full bg-sky-700 w-fit"
+		>{date}</span
+	>
+	<div class="block md:flex md:justify-between">
+		<div class="text-base font-normal">
+			<h1 class="font-bold font-lg">{title}</h1>
+			<h3 class="">{subtitle}</h3>
+			<p class="text-sm font-thin">{description}</p>
+		</div>
+		{
+			url && (
+				<a
+					href={url}
+					class="inline-flex items-center gap-2 text-sm underline md:self-auto"
+				>
+					<slot />
+				</a>
+			)
+		}
+	</div>
+</div>

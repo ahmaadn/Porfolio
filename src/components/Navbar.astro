@@ -1,128 +1,134 @@
 ---
-import NavbarButton from "./NavbarBurger.astro";
-import NavbarLink from "./NavbarLink.astro";
-import Logo from "./Logo.astro";
 import { SITE_TITLE } from "../consts";
+import Icon from "./Icon.astro";
+import NavbarBurger from "./NavbarBurger.astro";
+import NavbarLink from "./NavbarLink.astro";
 
-const navLink: { label: string; href: string }[] = [
-   { label: "_home", href: "/" },
-   { label: "_about", href: "/me" },
-   { label: "_project", href: "/project" },
-   { label: "_contact", href: "/contact" },
+const Links: { label: string; href: string }[] = [
+	{ label: "_home", href: "/" },
+	{ label: "_about", href: "/me" },
+	{ label: "_project", href: "/project" },
+	{ label: "_contact", href: "/contact" },
 ];
 ---
 
-<nav
-   class="flex items-center w-full border-b border-gray-700 flex-row justify-between"
->
-   <div
-      id="brand"
-      class="flex items-center p-3 justify-between w-full md:w-auto md:border-r border-gray-700"
-   >
-      <a
-         href="/"
-         class="text-normal font-bold text-base-100 inline-flex items-center gap-x-1 md:w-52 justify-center"
-      >
-         <Logo />
-         <span> {SITE_TITLE}</span>
-      </a>
-      <NavbarButton />
-   </div>
-   <ul
-      class="hidden md:flex text-sm font-bold text-base-100 items-center h-full divide-x border-l divide-gray-700 border-gray-700"
-   >
-      {
-         navLink.map(({ label, href }) => (
-            <li class="relative group flex h-full items-center">
-               <NavbarLink
-                  href={href}
-                  className="group-hover:text-primary hover:text-primary block p-3"
-               >
-                  {label}
-               </NavbarLink>
-               <div class="absolute bottom-0 h-0.5 bg-primary opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:w-full w-0" />
-            </li>
-         ))
-      }
-   </ul>
-</nav>
-<div
-   id="nav-dialog"
-   class="fixed inset-0 z-20 flex justify-end group aria-hidden:hidden transition-all"
-   aria-expanded="false"
-   hidden
->
-   <label
-      id="nav-dialog-overlay"
-      class="fixed inset-0 group-aria-expanded:bg-black/50 hidden group-aria-expanded:block"
-   >
-   </label>
-   <div
-      class="w-2/3 bg-neutral relative border-l border-gray-700 translate-x-full group-aria-expanded:translate-x-0 transform ease-in-out duration-300 group-aria-expanded:ease-in-out"
-   >
-      <nav
-         class="p-8 flex items-center flex-col text-base-100 font-bold relative"
-      >
-         <NavbarButton className="absolute right-0 top-0 h-[54px] w-[54px]" />
-         <h1 class="text-base mb-8">{SITE_TITLE}</h1>
-         <div
-            class="flex flex-col justify-start w-full text-base-100 space-y-2 text-sm"
-         >
-            {
-               navLink.map(({ label, href }) => (
-                  <NavbarLink href={href} className="hover:text-primary">
-                     {label}
-                  </NavbarLink>
-               ))
-            }
-         </div>
-      </nav>
-   </div>
+<div id="navbar" class="group/navbar">
+	<nav
+		class="flex justify-center h-12 border-b border-b-white/50 bg-white/30 backdrop-blur-lg md:justify-between drop-shadow-lg"
+	>
+		<div
+			class="flex flex-row items-center justify-between w-full md:w-56 md:justify-center bg-gradient-to-l from-blue-900 to-sky-700 bg-clip-text"
+		>
+			<a href="/" class="inline-flex items-center px-4 text-xl font-bold">
+				<Icon icon="ahmaadn" gradient size="48px" />
+				<span>{SITE_TITLE}</span>
+			</a>
+			<burger-btn>
+				<NavbarBurger />
+			</burger-btn>
+		</div>
+		<ul
+			id="nav-menu"
+			class="justify-center hidden mr-2 text-base font-bold md:inline-flex"
+		>
+			{
+				Links.map(({ label, href }) => (
+					<li class="relative flex items-center group/item">
+						<NavbarLink
+							href={href}
+							className="px-3 group-hover/item:text-sky-700"
+						>
+							<span>{label}</span>
+						</NavbarLink>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<div
+		id="nav-dialog"
+		class="absolute inset-0 z-20 flex justify-end transition-all aria-hidden:hidden"
+		aria-expanded="false"
+		hidden
+	>
+		<label
+			id="nav-dialog-overlay"
+			class="fixed inset-0 hidden bg-black/20 group-[.active]/navbar:block"
+		></label>
+		<nav
+			class="group-[.active]/navbar:translate-x-0 translate-x-full bg-white/50 w-2/3 h-full ease-in-out duration-300 transform relative backdrop-blur py-6 space-y-3"
+		>
+			<burger-btn class="absolute top-0 right-0">
+				<NavbarBurger />
+			</burger-btn>
+			<h1 class="text-xl font-bold text-center">{SITE_TITLE}</h1>
+			<ul class="mx-3 space-y-2 text-sm font-bold">
+				{
+					Links.map(({ label, href }) => (
+						<li class="group/item">
+							<NavbarLink
+								href={href}
+								className="group-hover/item:bg-sky-700 group-focus/item:text-sky-700 w-full flex px-3 py-1 rounded-sm group-hover/item:text-white"
+							>
+								{label}
+							</NavbarLink>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
 </div>
 
 <script>
-   const burgerButton = document.querySelectorAll("#burger");
-   const navDialog = document.getElementById("nav-dialog");
-   const navDialogOverlay = document.getElementById("nav-dialog-overlay");
+	const nav = document.getElementById("navbar");
+	const navDialog = document.getElementById("nav-dialog");
+	const navDialogOverlay = document.getElementById("nav-dialog-overlay");
 
-   const openNavbar = (hidden: boolean) => {
-      navDialog.setAttribute("aria-expanded", hidden ? "true" : "false");
-      navDialog.hidden = !hidden;
-      burgerButton.forEach((btn) => {
-         if (hidden) {
-            btn.classList.add("active");
-         } else {
-            btn.classList.remove("active");
-         }
-      });
-   };
+	const openNav = (hidden: boolean) => {
+		if (navDialog) {
+			navDialog.setAttribute("aria-expanded", hidden ? "true" : "false");
+			navDialog.hidden = !hidden;
+			if (hidden) {
+				nav?.classList.add("active");
+			} else {
+				nav?.classList.remove("active");
+			}
+		}
+	};
 
-   burgerButton.forEach((btn) => {
-      btn.addEventListener("click", () => openNavbar(navDialog.hidden));
-   });
+	navDialogOverlay?.addEventListener("click", () => openNav(navDialog.hidden));
 
-   navDialogOverlay.addEventListener("click", () =>
-      openNavbar(navDialog.hidden)
-   );
-   // Hide menu button for large screens.
-   const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
-      if (e.matches) {
-         openNavbar(false);
-         navDialog.setAttribute("aria-hidden", "true");
-      } else {
-         navDialog.setAttribute("aria-hidden", "false");
-      }
-   };
-   const mediaQueries = window.matchMedia("(min-width: 768px)");
-   handleViewports(mediaQueries);
-   mediaQueries.addEventListener("change", handleViewports);
+	const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
+		if (navDialog) {
+			if (e.matches) {
+				openNav(false);
+				navDialog.setAttribute("aria-hidden", "true");
+			} else {
+				navDialog.setAttribute("aria-hidden", "false");
+			}
+		}
+	};
+
+	const mediaQueries = window.matchMedia("(min-width: 768px)");
+	handleViewports(mediaQueries);
+	mediaQueries.addEventListener("change", handleViewports);
+
+	class BurgerButton extends HTMLElement {
+		constructor() {
+			super();
+			const btn = this.querySelector("button");
+			btn?.addEventListener("click", () => openNav(navDialog.hidden));
+		}
+	}
+	customElements.define("burger-btn", BurgerButton);
 </script>
 
 <style>
-   #nav-dialog[hidden] {
-      pointer-events: none;
-      overflow: hidden;
-      opacity: 0;
-      visibility: hidden;
-   }
+	#nav-dialog[hidden] {
+		pointer-events: none;
+		overflow: hidden;
+		opacity: 0;
+		visibility: hidden;
+	}
 </style>

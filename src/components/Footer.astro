@@ -1,43 +1,61 @@
 ---
-import { Icon } from "astro-icon";
-import { SITE_TITLE } from "../consts";
+import Icon from "./Icon.astro";
 
 interface Props {
-   error?: boolean;
+	error?: boolean;
 }
 
 const { error } = Astro.props;
 ---
 
 <footer
-   class="flex border-t items-center text-base-100 text-xs select-none justify-between border-gray-700 z-10"
+	class="z-10 w-full text-sm font-bold border-t border-white/30 bg-white/30 backdrop-blur-lg drop-shadow-lg"
 >
-   <div
-      class="flex items-center border-r md:divide-x border-gray-700 divide-gray-700"
-   >
-      <div
-         class="hidden items-center px-2 py-1 md:flex bg-primary text-white rounded-bl-[4px]"
-      >
-         <Icon name="fluent:remote-16-filled" width="16" />
-      </div>
-      <a href="" class="flex items-center gap-x-1 px-2 py-1 hover:text-primary">
-         <Icon name="ion:git-branch-outline" width="16" />
-         <p>main</p>
-      </a>
-      <div class="hidden items-center px-2 py-1 md:flex">
-         <Icon name="ion:reload-circle-outline" width="16" />
-      </div>
-      <div class:list={["items-center px-2 py-1 gap-x-1 ", error ? "bg-error flex" : "hidden md:flex"]}>
-         <Icon name="ion:alert-circle-outline" width="16" />
-         {error ? <p>Error</p> : <p>0</p> <Icon name="ion:warning-outline" width="16" /><p>0</p>}
-      </div>
-   </div>
-
-   <div
-      class="flex items-center border-l divide-x border-gray-700 divide-gray-700"
-   >
-      <div class="flex items-center px-2 py-1">
-         <p>{SITE_TITLE}</p>
-      </div>
-   </div>
+	<div class="flex justify-between">
+		<div
+			class="flex items-center border-r md:divide-x border-white/30 divide-white/30"
+		>
+			<div
+				class="hidden h-full px-3 py-1 text-white bg-orange-600 rounded-bl md:inline-flex md:items-center"
+			>
+				<Icon icon="remote" />
+			</div>
+			<a
+				href="https://github.com/ahmaadn/Porfolio"
+				target="_blank"
+				class="inline-flex items-center h-full px-3 py-1 rounded-bl hover:bg-orange-500 hover:text-white md:rounded-none"
+			>
+				main
+			</a>
+			{
+				error ? (
+					<div class="inline-flex items-center h-full gap-1 px-3 py-1 text-white bg-red-600 max-sm:border-l max-sm:border-white/20">
+						<Icon icon="error" size="16px" />
+						<span>error</span>
+					</div>
+				) : (
+					<div class="items-center justify-center hidden h-full gap-1 px-3 py-1 md:inline-flex">
+						<Icon icon="error" size="16px" />
+						<span>0</span>
+						<Icon icon="warning" size="16px" />
+						<span>0</span>
+					</div>
+				)
+			}
+		</div>
+		<div class="flex justify-normal">
+			<div
+				class="flex items-center border-l md:divide-x border-white/30 divide-white/30"
+			>
+				<a class="hidden px-3 py-1 md:block"> theme by ...</a>
+				<a
+					href="https://github.com/ahmaadn"
+					target="_blank"
+					class="inline-flex items-center px-3 py-1 rounded-br hover:bg-sky-700 hover:text-white"
+				>
+					ahmaadn</a
+				>
+			</div>
+		</div>
+	</div>
 </footer>

@@ -1,13 +1,16 @@
 ---
 interface Props {
-   title: string;
-   tagline?: string;
-   align?: "center" | "left" | "right";
+	title: string;
+	tagline?: string;
+	className?: string;
 }
-const { align = "center", title, tagline } = Astro.props;
+const { className = "", title, tagline } = Astro.props;
 ---
 
-<header class:list={["py-16 px-6 space-y-1", `text-${align}`]}>
-   <h1 class="text-6xl font-bold text-base-100">{title}</h1>
-   {tagline && <p class="text-lg font-medium text-base-100">{tagline}</p>}
+<header class:list={["flex flex-col", className]}>
+	<div class="flex flex-col gap-1">
+		{tagline && <p class="text-lg font-medium">{tagline}</p>}
+		<h1 class="text-5xl font-bold md:text-6xl lg:text-8xl">{title}</h1>
+	</div>
+	<slot />
 </header>

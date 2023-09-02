@@ -2,23 +2,26 @@
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"button"> {
-   className?: string;
+	className?: string;
 }
 
 const { className = "", ...props } = Astro.props;
 ---
 
 <button
-   type="button"
-   id="burger"
-   class=`flex flex-col items-center justify-center md:hidden group h-6 w-6 ${className}`
-   {...props}
+	type="button"
+	id="burger"
+	class:list={[
+		"flex flex-col items-center justify-center md:hidden h-14 w-14",
+		className,
+	]}
+	{...props}
 >
-   <span
-      class="transition duration-300 ease-in-out w-4 h-[1px] block bg-base-100 my-0.5 -translate-x-1/2 group-[.active]:translate-x-1/2 group-[.active]:bg-primary"
-   ></span>
-   <span class="w-4 h-[1px] block bg-base-100 my-0.5"></span>
-   <span
-      class="transition duration-300 ease-in-out w-4 h-[1px] block bg-base-100 my-0.5 -translate-x-1/2 group-[.active]:translate-x-1/2 group-[.active]:bg-primary"
-   ></span>
+	<span
+		class="transition duration-300 ease-in-out w-4 h-[1px] block bg-black my-0.5 -translate-x-1/2 group-[.active]/navbar:translate-x-1/2 group-[.active]/navbar:bg-blue-800"
+	></span>
+	<span class="w-4 h-[1px] block bg-black my-0.5"></span>
+	<span
+		class="transition duration-300 ease-in-out w-4 h-[1px] block bg-black my-0.5 -translate-x-1/2 group-[.active]/navbar:translate-x-1/2 group-[.active]/navbar:bg-blue-800"
+	></span>
 </button>

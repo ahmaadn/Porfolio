@@ -1,0 +1,29 @@
+---
+import { Picture } from "astro-imagetools/components";
+
+interface Props {
+	src: string;
+	alt?: string;
+	className?: string;
+}
+
+const {
+	alt = "profile",
+	className = "overflow-hidden rounded-xl shadow-md shadow-gray-300",
+	src,
+} = Astro.props;
+---
+
+<Picture
+	src={src}
+	alt={alt}
+	width="480"
+	height="480"
+	breakpoints={[400, 800]}
+	preload="webp"
+	attributes={{
+		picture: {
+			class: className,
+		},
+	}}
+/>

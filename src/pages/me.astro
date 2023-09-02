@@ -1,23 +1,90 @@
 ---
-import Page from "../layouts/PageLayout.astro";
+import AboutContent from "../components/AboutContent.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Hero from "../components/Hero.astro";
-import Background from "../components/Background.astro";
+import Icon from "../components/Icon.astro";
+import PictureProfile from "../components/PictureProfile.astro";
+import * as SITE from "../consts";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Page title="me">
-   <div class="h-full flex">
-      <div
-         id="sidebar"
-         class="hidden md:block h-full border-r p-3 border-gray-700"
-      >
-         <div class="w-52"></div>
-      </div>
-      <div id="main" class="w-full">
-         <div class="p-8">
-            <Background src="/assets/backgrounds/bg-about.jpg">
-               <Hero title="About" tagline="tentang saya" />
-            </Background>
-         </div>
-      </div>
-   </div>
-</Page>
+<Layout title="about">
+	<div
+		class="relative flex flex-col gap-8 md:gap-10 p-6 md:grid md:grid-cols-[1fr_60%_1fr] md:mx-12"
+	>
+		<Hero
+			title="About-me"
+			className="md:col-start-2 items-center text-center"
+		>
+			<p class="text-base md:text-lg">
+				Terima kasih sudah mampir. Baca di bawah untuk mempelajari lebih
+				lanjut tentang diri saya
+			</p>
+			<Breadcrumbs className="-order-1 z-0 font-medium text-lg" />
+			<div class="flex justify-center">
+				<div class="w-64 mt-8">
+					<PictureProfile src="/assets/profile_pict_2.jpg" />
+				</div>
+			</div>
+		</Hero>
+		<section>
+			<h1 class="title">ME</h1>
+			<div class="block content">
+				<p>{SITE.ABOUT_ME}</p>
+			</div>
+		</section>
+		<section>
+			<h1 class="title">Education</h1>
+			<div class="content">
+				{
+					SITE.EDUCATION.map(
+						({ from, to, institute, course, location }) => (
+							<AboutContent
+								date={from + " - " + to}
+								title={course}
+								subtitle={institute}
+								description={location}
+							/>
+						)
+					)
+				}
+			</div>
+		</section>
+		<section>
+			<h1 class="title">Certificate</h1>
+			<div class="content">
+				{
+					SITE.CERTIFICATES.map(
+						({ issued, title, org, url, description }) => (
+							<AboutContent
+								date={issued}
+								title={title}
+								subtitle={org}
+								description={description}
+								url={url}
+							>
+								<span>View Certificate</span>
+								<Icon icon="link" />
+							</AboutContent>
+						)
+					)
+				}
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	section {
+		@apply md:contents;
+	}
+	.title {
+		@apply mb-1 text-xl font-bold md:mb-0 md:col-start-1 md:text-2xl;
+	}
+	.content {
+		@apply flex flex-col gap-1 md:col-span-2;
+	}
+	.date {
+		@apply px-3 text-xs text-white rounded-full inline-flex items-center justify-center bg-sky-700 font-light leading-5 w-fit;
+	}
+</style>

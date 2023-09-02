@@ -1,36 +1,26 @@
 ---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import "../styles/global.css";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
 interface Props {
-   title?: string;
-   description?: string;
+	title?: string;
+	description?: string;
 }
 
-const { title, description = SITE_DESCRIPTION } = Astro.props;
-import { ImageSupportDetection } from "astro-imagetools/components";
-
-var _title: string = SITE_TITLE;
-if (title) {
-   _title += " - " + title;
-}
+const { description = SITE_DESCRIPTION, title } = Astro.props;
 ---
 
-<!-- Global Metadata -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="description" content="Astro description" />
+<meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Primary Meta Tags -->
-<title>{_title}</title>
-<meta name="title" content={_title} />
+<title>{SITE_TITLE} {title && ` - ${title}`}</title>
+<meta name="title" content={SITE_TITLE} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={_title} />
+<meta property="og:title" content={SITE_TITLE} />
 <meta property="og:description" content={description} />
-<!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
-
-<ImageSupportDetection />

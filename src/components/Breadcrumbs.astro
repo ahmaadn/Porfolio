@@ -1,0 +1,55 @@
+---
+interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+
+interface BreadcrumbItem {
+	text: string;
+	href: string;
+}
+
+let parts: Array<BreadcrumbItem> = [{ text: "Home", href: "/" }];
+
+const paths = Astro.url.pathname.split("/").filter((x) => x);
+paths.forEach((text, i) => {
+	const href = `/${paths.slice(0, i + 1).join("/")}`;
+	parts.push({
+		text: text.replace(/[-_]/g, " "),
+		href,
+	});
+});
+---
+
+<nav aria-label="Breadcrumb" id="breadcrumbs" class={className}>
+	<ol class="breadcrumbs flex items-center min-h-min" role="list">
+		{
+			parts.map(({ text, href }) => (
+				<li class="breadcrumb flex items-center group" role="listitem">
+					<a
+						href={href}
+						class="group-hover:underline"
+						aria-current={
+							Astro.url.pathname === href ? "page" : undefined
+						}
+					>
+						{text}
+					</a>
+				</li>
+			))
+		}
+	</ol>
+</nav>
+
+<style>
+	.breadcrumbs li + li::before {
+		content: "/";
+		@apply block mr-3 ml-2;
+	}
+
+	.breadcrumbs-2 > li + li::before {
+		@apply border-r border-neutral-950 rotate-45 block  bg-transparent border-t w-2 mr-3 ml-2 h-2;
+		content: "";
+	}
+</style>
