@@ -1,4 +1,13 @@
-[*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}]
+root = true
+
+[*]
 charset = utf-8
-indent_style = space
 indent_size = 3
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{md,mdx}]
+indent_size = 2
+indent_style = space
