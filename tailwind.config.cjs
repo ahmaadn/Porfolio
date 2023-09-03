@@ -8,8 +8,8 @@ module.exports = {
 			fontFamily: {
 				sans: ["Noto Sans Mono", ...defaultTheme.fontFamily.sans],
 				mono: ["Noto Sans Mono", ...defaultTheme.fontFamily.mono],
-			}
+			},
 		},
 	},
 	plugins: [],
-}
+};
