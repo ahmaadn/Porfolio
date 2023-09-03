@@ -1,7 +1,9 @@
 ---
 import { Code } from "astro/components";
+import { Image } from "astro:assets";
+
+import profile_pict from "../assets/profile_pict.jpg";
 import Hero from "../components/Hero.astro";
-import PictureProfile from "../components/PictureProfile.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -30,10 +32,16 @@ import Layout from "../layouts/Layout.astro";
 		<div class="flex items-center justify-center">
 			<div class="relative w-56 lg:w-64 group">
 				<div
-					class="absolute inset-0 transition-all duration-300 ease-in-out origin-bottom-left transform rounded-xl -rotate-6 bg-gradient-to-r from-red-500 to-orange-500 group-hover:from-sky-800 group-hover:to-blue-500 group-hover:origin-bottom-right group-hover:rotate-6"
+					class="absolute inset-0 transition-all duration-300 ease-in-out origin-bottom-left transform rounded-xl -rotate-6 bg-gradient-to-r from-red-500 to-orange-500 group-hover:from-sky-800 group-hover:to-blue-500 group-hover:origin-bottom-right group-hover:rotate-6 -z-10"
 				>
 				</div>
-				<PictureProfile src="/assets/profile_pict.jpg" />
+				<Image
+					src={profile_pict}
+					alt="Ahmaad nur"
+					format="webp"
+					quality={90}
+					class="overflow-hidden rounded-xl shadow-sm shadow-gray-300"
+				/>
 			</div>
 		</div>
 	</div>

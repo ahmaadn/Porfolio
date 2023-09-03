@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import "../styles/global.css";
 
@@ -24,3 +25,5 @@ const { description = SITE_DESCRIPTION, title } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={SITE_TITLE} />
 <meta property="og:description" content={description} />
+
+<ViewTransitions />

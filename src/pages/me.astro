@@ -1,9 +1,10 @@
 ---
+import { Image } from "astro:assets";
+import profile_pict from "../assets/profile_pict_2.jpg";
 import AboutContent from "../components/AboutContent.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
-import PictureProfile from "../components/PictureProfile.astro";
 import * as SITE from "../consts";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -23,7 +24,13 @@ import Layout from "../layouts/Layout.astro";
 			<Breadcrumbs className="-order-1 z-0 font-medium text-lg" />
 			<div class="flex justify-center">
 				<div class="w-64 mt-8">
-					<PictureProfile src="/assets/profile_pict_2.jpg" />
+					<Image
+						src={profile_pict}
+						alt="Ahmad nur sahid"
+						format="webp"
+						quality={90}
+						class="overflow-hidden rounded-xl shadow-sm shadow-gray-300"
+					/>
 				</div>
 			</div>
 		</Hero>
@@ -45,7 +52,7 @@ import Layout from "../layouts/Layout.astro";
 								subtitle={institute}
 								description={location}
 							/>
-						)
+						),
 					)
 				}
 			</div>
@@ -66,7 +73,7 @@ import Layout from "../layouts/Layout.astro";
 								<span>View Certificate</span>
 								<Icon icon="link" />
 							</AboutContent>
-						)
+						),
 					)
 				}
 			</div>
