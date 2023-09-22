@@ -1,0 +1,27 @@
+---
+import { LINKS, SITE, SOSIAL } from "@/config";
+import Icon from "./icon.astro";
+import { Sidebar } from "./sidebar";
+import MobileLinkNav from "./mobile-link-nav.astro";
+---
+
+<Sidebar client:visible>
+	<div slot="button">
+		<Icon icon="split" class="group-hover:hidden group-aria-expanded:hidden" />
+		<Icon icon="splitFiled" class="hidden group-hover:block group-aria-expanded:block" />
+	</div>
+	<div>
+		<h2 class="inline-flex w-full items-center justify-center text-2xl font-bold">
+			<Icon icon="logo" size="48px" class="text-blue-600" />
+			{SITE.title}
+		</h2>
+		<div class="mt-4 space-y-4 divide-y border-t px-2">
+			<div class="flex flex-col pt-4">
+				{LINKS.map(({ ...props }) => <MobileLinkNav {...props} />)}
+			</div>
+			<div class="flex flex-col pt-4">
+				{SOSIAL.map(({ ...props }) => <MobileLinkNav {...props} />)}
+			</div>
+		</div>
+	</div>
+</Sidebar>

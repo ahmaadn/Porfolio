@@ -1,0 +1,66 @@
+---
+import { SOSIAL } from "@/config";
+import MainNav from "./main-nav.astro";
+import Icon from "./icon.astro";
+import type { iconPaths } from "@/lib/icon-path";
+import { ToggleTheme } from "./toggle-theme";
+import { buttonVariants } from "./ui/button";
+import { cn } from "@/lib/utils";
+import MobileNav from "./mobile-nav.astro";
+
+interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<header class={cn("w-full sticky top-0 z-50", className)}>
+	<nav
+		id="navbar"
+		class="container flex min-h-[56px] w-full items-center gap-2 py-2 transition-colors duration-300 md:grid md:grid-cols-[1fr_auto_1fr]"
+	>
+		<MainNav />
+		<div class="flex items-center gap-2 justify-self-end pl-2 text-foreground">
+			{
+				SOSIAL.map(({ label, href, icon }, index) => (
+					<a
+						href={href}
+						target="_blank"
+						class={cn(
+							buttonVariants({ variant: "outline", size: "icon" }),
+							index == 0 ? "" : "hidden"
+						)}
+					>
+						<Icon icon={icon as keyof typeof iconPaths} />
+						<span class="sr-only">{label}</span>
+					</a>
+				))
+			}
+			<ToggleTheme client:visible>
+				<Icon icon="sun" class="dark:invisible" />
+				<Icon icon="moon" class="invisible absolute dark:visible" />
+			</ToggleTheme>
+			<MobileNav />
+		</div>
+	</nav>
+</header>
+
+<style>
+	#navbar.in {
+		@apply bg-background/90  backdrop-blur;
+	}
+</style>
+
+<script>
+	const fixNav = () => {
+		const nav = document.querySelector("#navbar") as HTMLElement;
+		if (window.pageYOffset > nav.offsetTop) {
+			nav?.classList.add("in");
+		} else {
+			nav?.classList.remove("in");
+		}
+	};
+	fixNav();
+	window.onscroll = fixNav;
+</script>

@@ -1,19 +1,19 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { iconPaths } from "./IconPaths";
+import { iconPaths } from "@/lib/icon-path";
 
 interface Props extends HTMLAttributes<"svg"> {
 	icon: keyof typeof iconPaths;
-	color?: string;
 	size?: string;
-	gradient?: boolean;
 }
 
-const { color = "currentcolor", icon, size, gradient, ...props } = Astro.props;
+const { size = "20px", icon, ...props } = Astro.props;
 const iconPath = iconPaths[icon];
-if (size) props.style = { "--size": size };
-const gradientId =
-	"icon-gradient-" + Math.round(Math.random() * 10e12).toString(36);
+const style = {
+	"--size": size,
+	width: "var(--size, 1em)",
+	height: "var(--size, 1em)",
+};
 ---
 
 <svg
@@ -22,28 +22,10 @@ const gradientId =
 	width="40"
 	height="40"
 	aria-hidden="true"
-	stroke={gradient ? `url(#${gradientId})` : color}
-	fill={gradient ? `url(#${gradientId})` : color}
+	color="currentcolor"
+	fill="currentcolor"
+	style={style}
 	{...props}
 >
-	{
-		gradient && (
-			<linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-				<stop stop-color="#1e40af" />
-				<stop offset="20%" stop-color="#004daf" />
-				<stop offset="40%" stop-color="#0058ad" />
-				<stop offset="60%" stop-color="#0061a8" />
-				<stop offset="100%" stop-color="#0369a1" />
-			</linearGradient>
-		)
-	}
-	<g set:html={iconPath.path} />
+	<Fragment set:html={iconPath.path} />
 </svg>
-
-<style>
-	svg {
-		vertical-align: middle;
-		width: var(--size, 1em);
-		height: var(--size, 1em);
-	}
-</style>
