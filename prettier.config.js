@@ -5,9 +5,7 @@ export default {
 	printWidth: 100,
 	semi: true,
 	trailingComma: "es5",
-	bracketSpacing: true,
 	bracketSameLine: true,
-	endOfLine: "lf",
 	singleAttributePerLine: false,
 	plugins: [
 		"prettier-plugin-astro",
