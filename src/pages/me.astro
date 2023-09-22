@@ -1,29 +1,26 @@
 ---
-import { Image } from "astro:assets";
+import Layout from "@/layouts/layout.astro";
 import profile_pict from "../assets/profile_pict_2.jpg";
-import AboutContent from "../components/AboutContent.astro";
-import Breadcrumbs from "../components/Breadcrumbs.astro";
-import Hero from "../components/Hero.astro";
-import Icon from "../components/Icon.astro";
-import * as SITE from "../consts";
-import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import AboutContent from "@/components/about-content.astro";
+import Icon from "@/components/icon.astro";
+import { ABOUT_ME, EDUCATION, CERTIFICATES } from "@/config";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 ---
 
-<Layout title="about">
+<Layout>
 	<div
-		class="relative flex flex-col gap-8 md:gap-10 p-6 md:grid md:grid-cols-[1fr_60%_1fr] md:mx-12"
+		class="relative flex flex-col gap-8 px-4 md:grid md:grid-cols-[1fr_60%_1fr] md:gap-10 md:px-12"
 	>
-		<Hero
-			title="About-me"
-			className="md:col-start-2 items-center text-center"
-		>
-			<p class="text-base md:text-lg">
-				Terima kasih sudah mampir. Baca di bawah untuk mempelajari lebih
-				lanjut tentang diri saya
+		<div class="md:col-start-2 items-center text-center pt-10 gap-1">
+			<h1 class="text-5xl font-bold md:text-6xl lg:text-8xl">About Me</h1>
+			<p class="text-base md:text-lg" slot="hero-header">
+				Terima kasih sudah mampir. Baca di bawah untuk mempelajari lebih lanjut tentang diri
+				saya
 			</p>
-			<Breadcrumbs className="-order-1 z-0 font-medium text-lg" />
-			<div class="flex justify-center">
-				<div class="w-64 mt-8">
+			<div class="flex justify-center" slot="hero-content">
+				<div class="mt-8 w-64">
 					<Image
 						src={profile_pict}
 						alt="Ahmad nur sahid"
@@ -33,65 +30,67 @@ import Layout from "../layouts/Layout.astro";
 					/>
 				</div>
 			</div>
-		</Hero>
+		</div>
 		<section>
-			<h1 class="title">ME</h1>
-			<div class="block content">
-				<p>{SITE.ABOUT_ME}</p>
+			<h1 class="section__title">ME</h1>
+			<div class="section__content">
+				<p>{ABOUT_ME}</p>
 			</div>
 		</section>
 		<section>
-			<h1 class="title">Education</h1>
-			<div class="content">
+			<h1 class="section__title">Education</h1>
+			<div class="section__content">
 				{
-					SITE.EDUCATION.map(
-						({ from, to, institute, course, location }) => (
-							<AboutContent
-								date={from + " - " + to}
-								title={course}
-								subtitle={institute}
-								description={location}
-							/>
-						),
-					)
+					EDUCATION.map(({ from, to, institute, course, location }) => (
+						<AboutContent
+							date={from + " - " + to}
+							title={course}
+							subtitle={institute}
+							description={location}
+						/>
+					))
 				}
 			</div>
 		</section>
 		<section>
-			<h1 class="title">Certificate</h1>
-			<div class="content">
+			<h1 class="section__title">Certificate</h1>
+			<div class="section__content">
 				{
-					SITE.CERTIFICATES.map(
-						({ issued, title, org, url, description }) => (
-							<AboutContent
-								date={issued}
-								title={title}
-								subtitle={org}
-								description={description}
-								url={url}
+					CERTIFICATES.map(({ issued, title, org, url, description }) => (
+						<AboutContent
+							date={issued}
+							title={title}
+							subtitle={org}
+							description={description}
+							className="lg:flex lg:justify-between lg:gap-x-4"
+						>
+							<a
+								href={url}
+								class={cn(
+									buttonVariants({ variant: "link" }),
+									"gap-2 self-center whitespace-nowrap lg:min-w-min p-0 h-fit"
+								)}
+								target="_blank"
+								type="application/pdf"
 							>
-								<span>View Certificate</span>
-								<Icon icon="link" />
-							</AboutContent>
-						),
-					)
+								View Certificate
+								<Icon icon="link" size="16px" />
+							</a>
+						</AboutContent>
+					))
 				}
 			</div>
 		</section>
 	</div>
 </Layout>
-
 <style>
 	section {
 		@apply md:contents;
 	}
-	.title {
-		@apply mb-1 text-xl font-bold md:mb-0 md:col-start-1 md:text-2xl;
+	.section__title {
+		@apply mb-1 text-xl font-bold md:col-start-1 md:mb-0 md:text-2xl;
 	}
-	.content {
-		@apply flex flex-col gap-1 md:col-span-2;
-	}
-	.date {
-		@apply px-3 text-xs text-white rounded-full inline-flex items-center justify-center bg-sky-700 font-light leading-5 w-fit;
+	.section__content {
+		@apply flex flex-col gap-y-2 lg:gap-y-4 md:col-span-2;
 	}
 </style>

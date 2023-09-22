@@ -1,9 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/layout.astro";
+import { PROJECTS } from "@/config";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import Icon from "@/components/icon.astro";
 ---
 
-<Layout title="project">
-	<div class="flex items-center justify-center h-full">
-		<h1 class="text-5xl font-bold">WIP</h1>
+<Layout>
+	<div class="space-y-10">
+		<div class="pt-10">
+			<h1 class="text-center text-5xl font-bold md:text-6xl lg:text-8xl">Project</h1>
+		</div>
+		<div class="flex flex-col gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 md:px-20">
+			{
+				PROJECTS.map(({ name, date, description, tags, links }) => (
+					<Card>
+						<CardHeader>
+							<span class="font-mono text-xs">{date}</span>
+							<CardTitle>{name}</CardTitle>
+							<CardDescription>{description}</CardDescription>
+						</CardHeader>
+						<CardFooter>
+							{links.map(({ label, href, icon, external }) => (
+								<a href={href} class={cn(buttonVariants({ variant: "outline", size:'sm' }), 'gap-1')}>
+									{icon && <Icon icon={icon} size="16" />}
+									{label}
+								</a>
+							))}
+						</CardFooter>
+					</Card>
+				))
+			}
+		</div>
 	</div>
 </Layout>

@@ -1,34 +1,44 @@
 ---
-import Footer from "../components/Footer.astro";
-import MainHead from "../components/MainHead.astro";
-import Navbar from "../components/Navbar.astro";
+import Head from "@/components/head.astro";
+import Footer from "@/components/footer.astro";
+import MainHeader from "@/components/main-header.astro";
+import "@/styles/globals.css";
+import { cn } from "@/lib/utils";
 
 interface Props {
 	title?: string;
 	description?: string;
-	error?: boolean;
+	className?: string;
 }
-
-const { title, description, error } = Astro.props;
+const { title, description, className } = Astro.props;
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark">
 	<head>
-		<MainHead title={title} description={description} />
+		<Head title={title} description={description} />
+		<script is:inline>
+			const setDarkMode = () => {
+				const currentTheme = localStorage.getItem("ui-theme") || "dark";
+				if (currentTheme === "light") {
+					document.documentElement.classList.remove("dark");
+				} else {
+					document.documentElement.classList.add("dark");
+				}
+			};
+			setDarkMode();
+			document.addEventListener("astro:after-swap", setDarkMode);
+		</script>
 	</head>
-	<body class="relative overflow-hidden text-neutral-900">
-		<div
-			class="flex h-screen px-6 bg-gradient-to-tl from-orange-600 via-pink-600 to-blue-800"
-		>
-			<div class="flex flex-col w-full my-6 border rounded border-white/50">
-				<Navbar />
-				<main
-					class="relative z-0 w-full h-full overflow-auto backdrop-blur-lg bg-white/30 drop-shadow-lg"
-				>
+	<body class="min-h-screen font-sans">
+		<div class="relative flex min-h-screen flex-col">
+			<MainHeader />
+			<div class="flex-1">
+				<div class={cn("container relative", className)}>
 					<slot />
-				</main>
-				<Footer error={error} />
+				</div>
 			</div>
+			<Footer />
 		</div>
 	</body>
 </html>

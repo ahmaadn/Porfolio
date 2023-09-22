@@ -1,4 +1,7 @@
 ---
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
+import LinkNav from "./link-nav.astro";
 interface Props {
 	className?: string;
 }
@@ -21,20 +24,17 @@ paths.forEach((text, i) => {
 });
 ---
 
-<nav aria-label="Breadcrumb" id="breadcrumbs" class={className}>
-	<ol class="breadcrumbs flex items-center min-h-min" role="list">
+<nav aria-label="Breadcrumb" id="breadcrumbs" class="font-mono inline-flex">
+	<ol class="breadcrumbs flex min-h-min items-center" role="list">
 		{
 			parts.map(({ text, href }) => (
-				<li class="breadcrumb flex items-center group" role="listitem">
-					<a
+				<li class="breadcrumb flex items-center" role="listitem">
+					<LinkNav
 						href={href}
-						class="group-hover:underline"
-						aria-current={
-							Astro.url.pathname === href ? "page" : undefined
-						}
+						className={cn(buttonVariants({ variant: "link" }), "p-0", className)}
 					>
 						{text}
-					</a>
+					</LinkNav>
 				</li>
 			))
 		}
@@ -44,11 +44,6 @@ paths.forEach((text, i) => {
 <style>
 	.breadcrumbs li + li::before {
 		content: "/";
-		@apply block mr-3 ml-2;
-	}
-
-	.breadcrumbs-2 > li + li::before {
-		@apply border-r border-neutral-950 rotate-45 block  bg-transparent border-t w-2 mr-3 ml-2 h-2;
-		content: "";
+		@apply ml-2 mr-3 block;
 	}
 </style>

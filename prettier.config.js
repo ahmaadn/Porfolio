@@ -9,7 +9,11 @@ export default {
 	bracketSameLine: true,
 	endOfLine: "lf",
 	singleAttributePerLine: false,
-	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+	plugins: [
+		"prettier-plugin-astro",
+		"prettier-plugin-tailwindcss",
+		"@trivago/prettier-plugin-sort-imports",
+	],
 	overrides: [
 		{
 			files: "*.astro",

@@ -2,4 +2,4 @@
 **/.svn
 **/.hg
 **/node_modules
-**/public
+pnpm-lock.yaml

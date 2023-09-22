@@ -1,0 +1,41 @@
+---
+import type { Link } from "@/types";
+import LinkNav from "./link-nav.astro";
+import Icon from "./icon.astro";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
+
+interface Props extends Link {
+	className?: string;
+}
+
+const { className, label, href, icon, external } = Astro.props;
+---
+
+<LinkNav
+	className={cn(
+		buttonVariants({ variant: "ghost" }),
+		"inline-flex w-full items-center gap-x-1 rounded-sm px-2 font-medium justify-start py-1.5 h-fit",
+		className
+	)}
+	href={href}
+	target={external ? "_blank" : "_self"}
+>
+	<span>
+		{icon && <Icon icon={icon} size="16px" />}
+	</span>
+	{label}
+
+	{
+		external && (
+			<span class="ml-auto">
+				<Icon icon="linkout" size="16px" />
+			</span>
+		)
+	}
+</LinkNav>
+<style>
+	span {
+		@apply flex h-5 w-5 items-center;
+	}
+</style>

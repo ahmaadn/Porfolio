@@ -1,61 +1,20 @@
 ---
-import Icon from "./Icon.astro";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "./ui/button";
 
-interface Props {
-	error?: boolean;
-}
-
-const { error } = Astro.props;
+const LinkClass = cn(buttonVariants({ variant: "link" }), "p-0");
 ---
 
 <footer
-	class="z-10 w-full text-sm font-bold border-t border-white/30 bg-white/30 backdrop-blur-lg drop-shadow-lg"
+	class="container"
 >
-	<div class="flex justify-between">
-		<div
-			class="flex items-center border-r md:divide-x border-white/30 divide-white/30"
+<div class="flex flex-col items-center gap-x-2 pt-16 pb-10 md:flex-row md:justify-between">
+	<p>
+		Powered by <a href="https://astro.build/" class={LinkClass}>Astro</a> and Hosted by <a href="https://vercel.com/" class={LinkClass}
+			>Vercel</a
 		>
-			<div
-				class="hidden h-full px-3 py-1 text-white bg-orange-600 rounded-bl md:inline-flex md:items-center"
-			>
-				<Icon icon="remote" />
-			</div>
-			<a
-				href="https://github.com/ahmaadn/Porfolio"
-				target="_blank"
-				class="inline-flex items-center h-full px-3 py-1 rounded-bl hover:bg-orange-500 hover:text-white md:rounded-none"
-			>
-				main
-			</a>
-			{
-				error ? (
-					<div class="inline-flex items-center h-full gap-1 px-3 py-1 text-white bg-red-600 max-sm:border-l max-sm:border-white/20">
-						<Icon icon="error" size="16px" />
-						<span>error</span>
-					</div>
-				) : (
-					<div class="items-center justify-center hidden h-full gap-1 px-3 py-1 md:inline-flex">
-						<Icon icon="error" size="16px" />
-						<span>0</span>
-						<Icon icon="warning" size="16px" />
-						<span>0</span>
-					</div>
-				)
-			}
-		</div>
-		<div class="flex justify-normal">
-			<div
-				class="flex items-center border-l md:divide-x border-white/30 divide-white/30"
-			>
-				<a class="hidden px-3 py-1 md:block"> theme by ...</a>
-				<a
-					href="https://github.com/ahmaadn"
-					target="_blank"
-					class="inline-flex items-center px-3 py-1 rounded-br hover:bg-sky-700 hover:text-white"
-				>
-					ahmaadn</a
-				>
-			</div>
-		</div>
-	</div>
+	</p>
+	<p>&copy; 2023 Ahmad Nur Sahid</p>
+
+</div>
 </footer>

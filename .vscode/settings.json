@@ -1,5 +1,26 @@
 {
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": true
-	}
+  "editor.cursorBlinking": "blink",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 3,
+  "editor.fontFamily": "'Cascadia Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum',",
+  "editor.fontSize": 14,
+  "editor.fontWeight": "400",
+  "editor.letterSpacing": 0.5,
+  "editor.lineHeight": 21,
+  "editor.minimap.enabled": false,
+  "editor.minimap.showSlider": "always",
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "none",
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 3,
+  "terminal.integrated.fontFamily": "'Cascadia Mono', 'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
+  "window.zoomLevel": -0.4,
+  "workbench.tree.indent": 12,
+  "workbench.tree.renderIndentGuides": "none",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

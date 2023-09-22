@@ -1,22 +1,16 @@
 ---
 import { Code } from "astro/components";
-import { Image } from "astro:assets";
-
+import Layout from "@/layouts/layout.astro";
 import profile_pict from "../assets/profile_pict.jpg";
-import Hero from "../components/Hero.astro";
-import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
-	<div
-		class="flex flex-col h-full gap-8 p-6 md:grid md:grid-cols-[60%_1fr] md:content-center"
-	>
-		<Hero
-			title="Ahmad nur"
-			tagline="Hello all. I'm"
-			className="md:justify-self-center gap-2 md:gap-8"
-		>
-			<div id="code" class="font-sans text-sm md:text-base">
+	<div class="flex h-full flex-col gap-8 pt-8 md:grid md:grid-cols-[60%_1fr] md:px-8 md:py-24">
+		<div class="flex flex-col gap-1">
+			<p class="font-mono text-xl font-medium md:text-2xl">Hello all. I'm</p>
+			<h1 class="text-6xl font-bold md:text-8xl lg:text-9xl">Ahmad nur</h1>
+			<div class="code font-mono text-sm md:text-base">
 				<Code
 					code={`# you can also see it on my Github page\nlink: str = "https://github.com/ahmaadn"\nprint(link)`}
 					lang="python"
@@ -24,35 +18,36 @@ import Layout from "../layouts/Layout.astro";
 				/>
 				<span>&gt;&gt;&gt;&nbsp;</span><a
 					href="https://github.com/ahmaadn"
-					class="text-sky-700 hover:underline"
-					>https://github.com/ahmaadn</a
+					class="text-sky-700 dark:text-sky-500 hover:underline">https://github.com/ahmaadn</a
 				>
 			</div>
-		</Hero>
-		<div class="flex items-center justify-center">
-			<div class="relative w-56 lg:w-64 group">
-				<div
-					class="absolute inset-0 transition-all duration-300 ease-in-out origin-bottom-left transform rounded-xl -rotate-6 bg-gradient-to-r from-red-500 to-orange-500 group-hover:from-sky-800 group-hover:to-blue-500 group-hover:origin-bottom-right group-hover:rotate-6 -z-10"
-				>
-				</div>
+		</div>
+		<div class="flex h-full w-full items-center justify-center">
+			<div class="group relative w-56 lg:w-64">
 				<Image
 					src={profile_pict}
-					alt="Ahmaad nur"
 					format="webp"
 					quality={90}
+					alt="Ahmad nur sahid"
 					class="overflow-hidden rounded-xl shadow-sm shadow-gray-300"
 				/>
 			</div>
 		</div>
 	</div>
 </Layout>
-
 <style>
-	#code {
-		background-color: transparent !important;
+	.code {
+		--astro-code-color-background: transparent;
 		--astro-code-token-comment: #2b2c2d;
 		--astro-code-token-string-expression: #0369a1;
 		--astro-code-token-function: #dc2626;
 		--astro-code-token-constant: #dc2626;
 	}
+	:is(.dark .code) {
+		--astro-code-token-comment: #6b7280;
+		--astro-code-token-string-expression: #0ea5e9;
+		--astro-code-token-function: #ef4444;
+		--astro-code-token-constant: #ef4444;
+	}
 </style>
+
