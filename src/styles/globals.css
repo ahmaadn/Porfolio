@@ -74,3 +74,9 @@
 		@apply block bg-background text-foreground transition-colors duration-300;
 	}
 }
+
+@media (max-width: 640px) {
+	.container {
+	  @apply px-4;
+	}
+ }

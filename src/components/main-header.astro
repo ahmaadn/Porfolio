@@ -15,11 +15,10 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<header class={cn("w-full sticky top-0 z-50", className)}>
+<header class={cn("container sticky top-0 z-50", className)}>
 	<nav
 		id="navbar"
-		class="container flex min-h-[56px] w-full items-center gap-2 py-2 transition-colors duration-300 md:grid md:grid-cols-[1fr_auto_1fr]"
-	>
+		class="flex min-h-[56px] w-full items-center gap-2 py-2 transition-colors duration-300 md:grid md:grid-cols-[1fr_auto_1fr]">
 		<MainNav />
 		<div class="flex items-center gap-2 justify-self-end pl-2 text-foreground">
 			{
@@ -30,8 +29,7 @@ const { className } = Astro.props;
 						class={cn(
 							buttonVariants({ variant: "outline", size: "icon" }),
 							index == 0 ? "" : "hidden"
-						)}
-					>
+						)}>
 						<Icon icon={icon as keyof typeof iconPaths} />
 						<span class="sr-only">{label}</span>
 					</a>
