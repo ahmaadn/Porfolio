@@ -1,38 +1,40 @@
 import type { iconPaths } from "./lib/icon-path";
 
-export type Site = {
+export interface Site {
 	title: string;
 	description: string;
 	author: string;
-};
+}
 
-export type Education = {
+export interface Education {
 	from: string;
 	to: string;
 	institute: string;
 	course: string;
 	location: string;
-}[];
+}
 
-export type Certificates = {
+export interface Certificates {
 	issued: string;
 	title: string;
 	org: string;
 	url: string;
 	description: string;
-}[];
+}
 
-export type Link = {
+export interface Link {
 	label: string;
-	href: string;
+	url: string;
 	external?: boolean;
 	icon?: keyof typeof iconPaths;
-};
+}
 
-export type Project = {
+export interface Project {
 	name: string;
-	links?: Link[];
 	date: string;
 	description: string;
 	tags?: string[];
-};
+	sourceUrl?: string;
+	demoUrl?: string;
+	articleUrl?: string;
+}
