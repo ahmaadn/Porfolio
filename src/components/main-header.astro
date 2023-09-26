@@ -1,5 +1,5 @@
 ---
-import { SOSIAL } from "@/config";
+import { SOSIALLINK } from "@/config";
 import MainNav from "./main-nav.astro";
 import Icon from "./icon.astro";
 import type { iconPaths } from "@/lib/icon-path";
@@ -22,9 +22,9 @@ const { className } = Astro.props;
 		<MainNav />
 		<div class="flex items-center gap-2 justify-self-end pl-2 text-foreground">
 			{
-				SOSIAL.map(({ label, href, icon }, index) => (
+				SOSIALLINK.map(({ label, url, icon }, index) => (
 					<a
-						href={href}
+						href={url}
 						target="_blank"
 						class={cn(
 							buttonVariants({ variant: "outline", size: "icon" }),

@@ -1,5 +1,5 @@
 ---
-import { SITE, LINKS } from "@/config";
+import { SITE, LINKSNAV } from "@/config";
 import Icon from "./icon.astro";
 import LinkNav from "./link-nav.astro";
 ---
@@ -18,9 +18,9 @@ import LinkNav from "./link-nav.astro";
 		class="hidden h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground md:inline-flex duration-300"
 	>
 		{
-			LINKS.map(({ label, href }) => (
+			LINKSNAV.map(({ label, url }) => (
 				<LinkNav
-					href={href}
+					href={url}
 					className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 aria-[current]:bg-background aria-[current]:text-foreground aria-[current]:shadow w-20 duration-300"
 				>
 					{label}
