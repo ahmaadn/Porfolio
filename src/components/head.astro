@@ -2,31 +2,35 @@
 import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 import { SITE } from "@/config";
-import image from "@/assets/profile_pict.jpg";
+import defaultImage from "@/assets/profile_pict.jpg";
 
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string;
 }
 
-const { description = SITE.description, title } = Astro.props;
+const { description = SITE.description, image = defaultImage.src, title } = Astro.props;
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
 <SEO
+	charset="UTF-8"
 	title={title}
 	titleDefault={SITE.title}
 	titleTemplate={SITE.title + " - %s"}
 	description={description}
 	extend={{
 		link: [{ rel: "icon", href: "/favicon.svg" }],
+		meta: [{ name: "viewport", content: "width=device-width" }],
 	}}
 	openGraph={{
 		basic: {
 			title: SITE.title,
 			type: "website",
-			image: image.src,
+			image: image,
+		},
+		optional: {
+			description: description,
 		},
 	}}
 />

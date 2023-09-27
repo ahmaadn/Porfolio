@@ -8,15 +8,17 @@ import { cn } from "@/lib/utils";
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string;
 	className?: string;
 }
-const { title, description, className } = Astro.props;
+const { title, description, image, className } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
 	<head>
-		<Head title={title} description={description} />
+		<Head title={title} description={description} image={image} />
+		<slot name="head" />
 		<script is:inline>
 			const setDarkMode = () => {
 				const currentTheme = localStorage.getItem("ui-theme") || "dark";
