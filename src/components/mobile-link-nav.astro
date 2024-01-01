@@ -9,7 +9,7 @@ interface Props extends Link {
 	className?: string;
 }
 
-const { className, label, href, icon, external } = Astro.props;
+const { className, label, url, icon, external } = Astro.props;
 ---
 
 <LinkNav
@@ -18,7 +18,7 @@ const { className, label, href, icon, external } = Astro.props;
 		"inline-flex w-full items-center gap-x-1 rounded-sm px-2 font-medium justify-start py-1.5 h-fit",
 		className
 	)}
-	href={href}
+	href={url}
 	target={external ? "_blank" : "_self"}
 >
 	<span>
