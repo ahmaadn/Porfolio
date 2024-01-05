@@ -8,21 +8,18 @@ import LinkNav from "./link-nav.astro";
 	<div>
 		<a
 			href="/"
-			class="inline-flex items-center text-xl font-bold text-foreground transition-colors md:text-2xl duration-300"
-		>
+			class="inline-flex items-center text-xl font-bold text-foreground transition-colors duration-300 md:text-2xl">
 			<Icon icon="logo" size="48px" class="text-blue-600" />
 			<h1>{SITE.title}</h1>
 		</a>
 	</div>
 	<div
-		class="hidden h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground md:inline-flex duration-300"
-	>
+		class="hidden h-9 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground duration-300 md:inline-flex">
 		{
 			LINKSNAV.map(({ label, url }) => (
 				<LinkNav
 					href={url}
-					className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 aria-[current]:bg-background aria-[current]:text-foreground aria-[current]:shadow w-20 duration-300"
-				>
+					className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 aria-[current]:bg-background aria-[current]:text-foreground aria-[current]:shadow w-20 duration-300">
 					{label}
 				</LinkNav>
 			))

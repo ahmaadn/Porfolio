@@ -66,7 +66,7 @@ const SheetContent = React.forwardRef<
 			{children}
 			<SheetPrimitive.Close
 				className={cn(
-					buttonVariants({ variant: "outline", size: "icon" }),
+					buttonVariants({ variant: "ghost", size: "icon" }),
 					"absolute right-4 top-4 opacity-70 disabled:pointer-events-none data-[state=open]:bg-secondary"
 				)}>
 				<Cross2Icon className="h-5 w-5" />

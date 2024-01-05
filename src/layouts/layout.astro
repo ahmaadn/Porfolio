@@ -33,14 +33,20 @@ const { title, description, image, className } = Astro.props;
 		</script>
 	</head>
 	<body class="min-h-screen font-sans">
-		<div class="relative flex min-h-screen flex-col">
+		<div
+			class="fixed left-0 top-0 z-0 h-[134px] w-[134px] rounded-full bg-orange-600 opacity-60 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
+		</div>
+		<div
+			class="fixed bottom-0 right-0 z-0 h-[134px] w-[134px] rounded-full bg-blue-800 opacity-60 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
+		</div>
+		<main class="container flex min-h-screen max-w-5xl flex-col">
 			<MainHeader />
 			<div class="flex-1">
-				<div class={cn("container relative", className)}>
+				<div class={cn("relative", className)}>
 					<slot />
 				</div>
 			</div>
 			<Footer />
-		</div>
+		</main>
 	</body>
 </html>

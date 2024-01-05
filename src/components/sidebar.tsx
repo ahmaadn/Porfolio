@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { SITE } from "@/config";
 import React from "react";
 
 interface Props {
@@ -11,12 +12,17 @@ export const Sidebar = ({ children, button }: Props) => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant="outline" size="icon" className="md:hidden group">
+				<Button variant="ghost" size="icon" className="md:hidden group">
 					{button}
 					<span className="sr-only">sidebar button</span>
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="left">{children}</SheetContent>
+			<SheetContent side="right">
+				<SheetHeader>
+					<SheetTitle>{SITE.title}</SheetTitle>
+				</SheetHeader>
+				{children}
+			</SheetContent>
 		</Sheet>
 	);
 };

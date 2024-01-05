@@ -18,7 +18,7 @@ export const ToggleTheme = ({ children }: Props) => {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant="outline" size="icon" className="relative">
+				<Button variant="ghost" size="icon" className="relative">
 					{children}
 					<span className="sr-only">toggle theme</span>
 				</Button>

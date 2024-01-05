@@ -3,24 +3,21 @@ import { Code } from "astro/components";
 import Layout from "@/layouts/layout.astro";
 import profile_pict from "@/assets/profile_pict.jpg";
 import { Image } from "astro:assets";
+import { ABOUT_ME, CERTIFICATES, EDUCATION } from "@/config";
+import AboutContent from "@/components/about-content.astro";
+import { buttonVariants } from "@/components/ui/button";
+import Icon from "@/components/icon.astro";
+import { cn } from "@/lib/utils";
 ---
 
 <Layout>
-	<div class="flex h-full flex-col gap-8 pt-8 md:grid md:grid-cols-[60%_1fr] md:px-12 md:py-24">
-		<div class="flex flex-col gap-1">
-			<p class="font-mono text-xl font-medium md:text-2xl">Hello all. I'm</p>
-			<h1 class="text-6xl font-bold md:text-8xl lg:text-9xl">Ahmad nur</h1>
-			<div class="code font-mono text-sm md:text-base">
-				<Code
-					code={`# you can also see it on my Github page\nlink: str = "https://github.com/ahmaadn"\nprint(link)`}
-					lang="python"
-					theme="css-variables"
-				/>
-				<span>&gt;&gt;&gt;&nbsp;</span><a
-					href="https://github.com/ahmaadn"
-					class="text-sky-700 hover:underline dark:text-sky-500">https://github.com/ahmaadn</a
-				>
-			</div>
+	<div class="flex h-full flex-col gap-8 pb-28 pt-8 md:grid md:grid-cols-[60%_1fr] md:py-28">
+		<div class="flex flex-col gap-2">
+			<p class="font-mono text-xl font-medium">Hello all. I'm</p>
+			<h1 class="text-6xl font-bold md:text-8xl">Ahmad nur</h1>
+			<p class="pt-4 text-lg font-medium">
+				{ABOUT_ME}
+			</p>
 		</div>
 		<div class="flex h-full w-full items-center justify-center">
 			<div class="group relative w-56 lg:w-64">
@@ -34,19 +31,59 @@ import { Image } from "astro:assets";
 			</div>
 		</div>
 	</div>
+	<div class="relative flex flex-col gap-8 md:grid md:grid-cols-[1fr_60%_1fr] md:gap-10">
+		<section>
+			<h1 class="section__title">Education</h1>
+			<div class="section__content">
+				{
+					EDUCATION.map(({ from, to, institute, course, location }) => (
+						<AboutContent
+							date={from + " - " + to}
+							title={course}
+							subtitle={location}
+							description={institute}
+						/>
+					))
+				}
+			</div>
+		</section>
+		<section>
+			<h1 class="section__title">Certificate</h1>
+			<div class="section__content">
+				{
+					CERTIFICATES.map(({ issued, title, org, url, description }) => (
+						<AboutContent
+							date={issued}
+							title={title}
+							subtitle={org}
+							description={description}
+							className="lg:flex lg:justify-between lg:gap-x-4">
+							<a
+								href={url}
+								class={cn(
+									buttonVariants({ variant: "link" }),
+									"h-fit gap-2 self-center whitespace-nowrap p-0 lg:min-w-min"
+								)}
+								target="_blank"
+								type="application/pdf">
+								View Certificate
+								<Icon icon="link" size="16px" />
+							</a>
+						</AboutContent>
+					))
+				}
+			</div>
+		</section>
+	</div>
 </Layout>
 <style>
-	.code {
-		--astro-code-color-background: transparent;
-		--astro-code-token-comment: #2b2c2d;
-		--astro-code-token-string-expression: #0369a1;
-		--astro-code-token-function: #dc2626;
-		--astro-code-token-constant: #dc2626;
+	section {
+		@apply md:contents;
 	}
-	:is(.dark .code) {
-		--astro-code-token-comment: #6b7280;
-		--astro-code-token-string-expression: #0ea5e9;
-		--astro-code-token-function: #ef4444;
-		--astro-code-token-constant: #ef4444;
+	.section__title {
+		@apply mb-4 text-2xl font-bold md:col-start-1 md:mb-0;
+	}
+	.section__content {
+		@apply flex flex-col gap-y-12 md:col-span-2;
 	}
 </style>

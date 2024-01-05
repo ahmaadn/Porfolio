@@ -12,11 +12,11 @@ const { title, subtitle, description, date, className } = Astro.props;
 ---
 
 <div class={className}>
-	<div class="text-base font-normal w-full">
+	<div class="w-full space-y-2 text-base font-normal">
 		<Badge>{date}</Badge>
 		<h1 class="font-lg font-bold">{title}</h1>
-		<h3>{subtitle}</h3>
-		<p class="text-sm font-light">{description}</p>
+		<h3 class="font-sm text-blue-700 dark:text-sky-500">{subtitle}</h3>
+		<p class="font-xl">{description}</p>
 	</div>
 	<slot />
 </div>

@@ -7,7 +7,7 @@ export const SITE: Site = {
 };
 
 export const ABOUT_ME =
-	"Halo, saya Ahmad Nur Sahid, biasa dipanggil Ahmad. Saya lahir pada tanggal 5 Agustus. Hobi utama saya adalah bermain game mobile dan coding. Saat ini, saya merupakan mahasiswa Teknik  Informatika di Institut Teknologi Garut. Minat saya terhadap bahasa pemrograman muncul sejak remaja, dan awalnya saya belajar pemrograman ketika masih di sekolah menengah kejuruan (SMK). Bahasa pertama yang saya pelajari adalah Python.";
+	"Halo, saya software enginner. Saat ini, saya merupakan mahasiswa Teknik  Informatika di Institut Teknologi Garut. Minat saya terhadap bahasa pemrograman muncul sejak remaja, dan awalnya saya belajar pemrograman ketika masih di sekolah menengah kejuruan (SMK). Bahasa pertama yang saya pelajari adalah Python.";
 
 export const EDUCATION: Education[] = [
 	{
@@ -47,7 +47,6 @@ export const CERTIFICATES: Certificates[] = [
 
 export const LINKSNAV: Link[] = [
 	{ label: "Home", url: "/" },
-	{ label: "About", url: "/me" },
 	{ label: "Project", url: "/project" },
 	{ label: "Contact", url: "mailto:ahmadnursahid12345@gmail.com", icon: "mail", external: true },
 ];
@@ -62,6 +61,6 @@ export const PROJECTS: Project[] = [
 		date: "2022",
 		description: "Aplikasi dekstop sederhana menggunakan python.",
 		tags: ["python"],
-		sourceUrl: "https://github.com/ahmaadn/Youtube-Downloader"
+		sourceUrl: "https://github.com/ahmaadn/Youtube-Downloader",
 	},
 ];

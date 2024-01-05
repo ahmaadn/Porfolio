@@ -15,7 +15,7 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<header class={cn("container sticky top-0 z-50", className)}>
+<header class={cn("z-50 md:pt-6 pt-1", className)}>
 	<nav
 		id="navbar"
 		class="flex min-h-[56px] w-full items-center gap-2 py-2 transition-colors duration-300 md:grid md:grid-cols-[1fr_auto_1fr]">
@@ -27,7 +27,7 @@ const { className } = Astro.props;
 						href={url}
 						target="_blank"
 						class={cn(
-							buttonVariants({ variant: "outline", size: "icon" }),
+							buttonVariants({ variant: "ghost", size: "icon" }),
 							index == 0 ? "" : "hidden"
 						)}>
 						<Icon icon={icon as keyof typeof iconPaths} />
@@ -43,22 +43,3 @@ const { className } = Astro.props;
 		</div>
 	</nav>
 </header>
-
-<style>
-	#navbar.in {
-		@apply bg-background/90  backdrop-blur;
-	}
-</style>
-
-<script>
-	const fixNav = () => {
-		const nav = document.querySelector("#navbar") as HTMLElement;
-		if (window.pageYOffset > nav.offsetTop) {
-			nav?.classList.add("in");
-		} else {
-			nav?.classList.remove("in");
-		}
-	};
-	fixNav();
-	window.onscroll = fixNav;
-</script>
