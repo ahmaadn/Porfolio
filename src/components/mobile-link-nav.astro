@@ -14,25 +14,16 @@ const { className, label, url, icon, external } = Astro.props;
 
 <LinkNav
 	className={cn(
-		buttonVariants({ variant: "ghost" }),
-		"inline-flex w-full items-center gap-x-1 rounded-sm px-2 font-medium justify-start py-1.5 h-fit",
+		buttonVariants({ variant: "link" }),
+		"inline-flex w-full items-center gap-x-1 rounded-sm px-2 font-medium justify-start py-1.5 h-fit text-base",
 		className
 	)}
 	href={url}
-	target={external ? "_blank" : "_self"}
->
+	target={external ? "_blank" : "_self"}>
 	<span>
-		{icon && <Icon icon={icon} size="16px" />}
+		{icon && <Icon icon={icon} size="18px" />}
 	</span>
 	{label}
-
-	{
-		external && (
-			<span class="ml-auto">
-				<Icon icon="linkout" size="16px" />
-			</span>
-		)
-	}
 </LinkNav>
 <style>
 	span {

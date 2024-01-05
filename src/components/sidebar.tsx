@@ -17,9 +17,9 @@ export const Sidebar = ({ children, button }: Props) => {
 					<span className="sr-only">sidebar button</span>
 				</Button>
 			</SheetTrigger>
-			<SheetContent side="right">
-				<SheetHeader>
-					<SheetTitle>{SITE.title}</SheetTitle>
+			<SheetContent side="left">
+				<SheetHeader className="text-left font-medium">
+					<SheetTitle className="text-xl">{SITE.title}</SheetTitle>
 				</SheetHeader>
 				{children}
 			</SheetContent>
