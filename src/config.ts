@@ -3,7 +3,7 @@ import type { Site, Education, Certificates, Link, Project } from "@/types";
 export const SITE: Site = {
 	title: "Ahmaadn",
 	description: "Welcome to my website",
-	author: "ahmaad",
+	author: "Ahmad nur",
 };
 
 export const ABOUT_ME =
