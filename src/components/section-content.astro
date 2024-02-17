@@ -1,10 +1,10 @@
 ---
 import { Badge } from "./ui/badge";
 interface Props {
+	date: string;
 	title: string;
 	subtitle: string;
 	description: string;
-	date: string;
 	className?: string;
 }
 
@@ -12,11 +12,11 @@ const { title, subtitle, description, date, className } = Astro.props;
 ---
 
 <div class={className}>
-	<div class="w-full space-y-2 text-base font-normal">
+	<div class="w-full space-y-3 font-medium">
 		<Badge>{date}</Badge>
-		<h1 class="font-lg font-bold">{title}</h1>
-		<h3 class="font-sm text-blue-700 dark:text-sky-500">{subtitle}</h3>
-		<p class="font-xl">{description}</p>
+		<h1 class="text-lg font-bold">{title}</h1>
+		<h3 class="text-base text-sky-700 dark:text-sky-600">{subtitle}</h3>
+		<p class="text-base">{description}</p>
 	</div>
 	<slot />
 </div>

@@ -3,7 +3,7 @@ import Layout from "@/layouts/layout.astro";
 import profile_pict from "@/assets/profile_pict.jpg";
 import { Image } from "astro:assets";
 import { ABOUT_ME, CERTIFICATES, EDUCATION, SITE } from "@/config";
-import AboutContent from "@/components/about-content.astro";
+import SectionContent from "@/components/section-content.astro";
 import { buttonVariants } from "@/components/ui/button";
 import Icon from "@/components/icon.astro";
 import { cn } from "@/lib/utils";
@@ -34,27 +34,27 @@ import { cn } from "@/lib/utils";
 		</div>
 	</div>
 	<div class="relative flex flex-col gap-8 md:grid md:grid-cols-[1fr_60%_1fr] md:gap-10">
-		<section>
+		<section id="education">
 			<h1 class="section__title">Education</h1>
 			<div class="section__content">
 				{
 					EDUCATION.map(({ from, to, institute, course, location }) => (
-						<AboutContent
+						<SectionContent
 							date={from + " - " + to}
-							title={course}
-							subtitle={location}
-							description={institute}
+							title={institute}
+							subtitle={course}
+							description={location}
 						/>
 					))
 				}
 			</div>
 		</section>
-		<section>
+		<section id='CERTIFICATES'>
 			<h1 class="section__title">Certificate</h1>
 			<div class="section__content">
 				{
 					CERTIFICATES.map(({ issued, title, org, url, description }) => (
-						<AboutContent
+						<SectionContent
 							date={issued}
 							title={title}
 							subtitle={org}
@@ -71,7 +71,7 @@ import { cn } from "@/lib/utils";
 								View Certificate
 								<Icon icon="link" size="16px" />
 							</a>
-						</AboutContent>
+						</SectionContent>
 					))
 				}
 			</div>
