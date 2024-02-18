@@ -47,7 +47,7 @@ export const CERTIFICATES: Certificates[] = [
 
 export const LINKSNAV: Link[] = [
 	{ label: "Home", url: "/" },
-	{ label: "Project", url: "/project" },
+	{ label: "Project", url: "/#project" },
 	{ label: "Contact", url: "mailto:ahmadnursahid12345@gmail.com", icon: "mail", external: true },
 ];
 

@@ -2,11 +2,12 @@
 import Layout from "@/layouts/layout.astro";
 import profile_pict from "@/assets/profile_pict.jpg";
 import { Image } from "astro:assets";
-import { ABOUT_ME, CERTIFICATES, EDUCATION, SITE } from "@/config";
+import { ABOUT_ME, CERTIFICATES, EDUCATION, SITE, PROJECTS } from "@/config";
 import SectionContent from "@/components/section-content.astro";
 import { buttonVariants } from "@/components/ui/button";
 import Icon from "@/components/icon.astro";
 import { cn } from "@/lib/utils";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 ---
 
 <Layout>
@@ -74,6 +75,57 @@ import { cn } from "@/lib/utils";
 						</SectionContent>
 					))
 				}
+			</div>
+		</section>
+		<section id="project">
+			<h1 class="section__title md:col-span-2">Feature Projects</h1>
+			<div class="col-span-3 md:col-start-1">
+				<div class="flex flex-col gap-5 sm:grid sm:grid-cols-2 lg:gap-10">
+					{
+						PROJECTS.map(
+							({ name, date, description, tags, sourceUrl, articleUrl, demoUrl }) => (
+								<Card>
+									<CardHeader>
+										<span class="font-mono text-xs">{date}</span>
+										<CardTitle>{name}</CardTitle>
+										<CardDescription>{description}</CardDescription>
+									</CardHeader>
+									<CardFooter className="flex flex-wrap gap-2">
+										{articleUrl && (
+											<a
+												href={articleUrl}
+												class={buttonVariants({ variant: "outline", size: "sm" })}>
+												Article
+											</a>
+										)}
+
+										{demoUrl && (
+											<a
+												href={demoUrl}
+												class={buttonVariants({ variant: "outline", size: "sm" })}
+												target="_blank">
+												Demo
+											</a>
+										)}
+
+										{sourceUrl && (
+											<a
+												href={sourceUrl}
+												class={cn(
+													buttonVariants({ variant: "outline", size: "sm" }),
+													"gap-1"
+												)}
+												target="_blank">
+												Source
+												<Icon icon="linkout" size="16" />
+											</a>
+										)}
+									</CardFooter>
+								</Card>
+							)
+						)
+					}
+				</div>
 			</div>
 		</section>
 	</div>
