@@ -41,7 +41,11 @@ const { title, description, image = defaultImage.src } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 		></script>
-		<script is:inline src="/scripts/jquery.nav.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js"
+			integrity="sha512-I1SRWCuHnqVwlUXfm2TNMDduALHE1LfFpbQtFPY2z33Jy0iJAEXBDgrRrBLbpVChGclfCB0Hfy0F8wLVJtIVPQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"></script>
 		<script is:inline>
 			const setDarkMode = () => {
 				const currentTheme = localStorage.getItem("ui-theme") || "dark";
