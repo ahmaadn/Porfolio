@@ -1,0 +1,33 @@
+---
+import Content from "./Content.astro";
+import { Icon } from "astro-iconify";
+import { PROJECTS } from "../config";
+---
+
+<Content id="project" title="Project">
+	<div class="flex flex-col gap-4">
+		{
+			PROJECTS.map(({ name, tags, url }) => (
+				<a
+					class="inline-flex w-full items-center gap-2 rounded-md border-2 border-neutral-300 p-4 opacity-80 transition-all duration-300 hover:border-orange-600 hover:opacity-100 hover:shadow-md hover:shadow-orange-600/50 dark:border-neutral-400"
+					href={url}>
+					<div class="flex-1 font-semibold">
+						<p class="mb-4 text-sm">MAR 14, 2024</p>
+						<h4 class="text-base font-bold text-neutral-950 dark:text-neutral-100">{name}</h4>
+						<h4 class="text-sm">Mambuat website ecommers sederhana </h4>
+						<div class="mt-2 inline-flex flex-wrap gap-2">
+							{tags.map((tag) => (
+								<span class="inline-flex items-center justify-center rounded-sm bg-neutral-300 px-2 text-sm text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200">
+									{tag}
+								</span>
+							))}
+						</div>
+					</div>
+					<div>
+						<Icon size="20" name="ep:top-right" />
+					</div>
+				</a>
+			))
+		}
+	</div>
+</Content>

@@ -1,0 +1,24 @@
+---
+import ThemeButton from "./Theme-Button.astro";
+
+interface Props {
+	author: string;
+	position: string;
+	mail: string;
+	class?: string;
+}
+const { class: className = "", author, position, mail } = Astro.props;
+---
+
+<header class={className}>
+	<div class="inline-flex w-full items-center gap-2 pt-6 md:pt-8">
+		<div class="block w-full flex-1 items-center md:inline-flex">
+			<div class="flex-1">
+				<h1 class="text-base font-bold text-orange-600">{author}</h1>
+				<span class="font-semibold">{position}</span>
+			</div>
+			<a href=`mailto:${mail}` class="link italic">{mail}</a>
+		</div>
+		<ThemeButton />
+	</div>
+</header>

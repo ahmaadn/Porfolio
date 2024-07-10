@@ -1,46 +1,56 @@
 ---
-import Head from "@/components/head.astro";
-import Footer from "@/components/footer.astro";
-import MainHeader from "@/components/main-header.astro";
-import "@/styles/globals.css";
-import { cn } from "@/lib/utils";
+import "../styles/globals.css";
+import { SEO } from "astro-seo";
+import { SITE } from "../config";
+import defaultImage from "../assets/profile_pict_2.jpg";
 
 interface Props {
 	title?: string;
+	class?: string;
 	description?: string;
 	image?: string;
-	className?: string;
 }
-const { title, description, image, className } = Astro.props;
+
+const { title, description, image = defaultImage.src } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 	<head>
-		<Head title={title} description={description} image={image} />
+		<SEO
+			charset="UTF-8"
+			title={title}
+			titleDefault={SITE.title}
+			titleTemplate={SITE.title + " - %s"}
+			description={description}
+			extend={{
+				link: [{ rel: "icon", href: "/favicon.svg" }],
+				meta: [{ name: "viewport", content: "width=device-width" }],
+			}}
+			openGraph={{
+				basic: {
+					title: SITE.title,
+					type: "website",
+					image: image,
+				},
+				optional: {
+					description: description,
+				},
+			}}
+		/>
 		<slot name="head" />
+		<meta name="generator" content={Astro.generator} />
+		<script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+		></script>
+		<script is:inline src="/scripts/jquery.nav.min.js"></script>
 		<script is:inline>
 			const setDarkMode = () => {
 				const currentTheme = localStorage.getItem("ui-theme") || "dark";
-				if (currentTheme === "light") {
-					document.documentElement.classList.remove("dark");
-				} else {
-					document.documentElement.classList.add("dark");
-				}
+				document.documentElement.setAttribute("data-theme", currentTheme);
 			};
 			setDarkMode();
-			document.addEventListener("astro:after-swap", setDarkMode);
 		</script>
 	</head>
-	<body class="min-h-screen font-sans">
-		<div class="relative flex min-h-screen flex-col">
-			<MainHeader />
-			<div class="flex-1">
-				<div class={cn("container relative", className)}>
-					<slot />
-				</div>
-			</div>
-			<Footer />
-		</div>
+	<body class="bg-neutral-100 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-400">
+		<slot />
 	</body>
 </html>

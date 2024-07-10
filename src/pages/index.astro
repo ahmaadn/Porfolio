@@ -1,52 +1,41 @@
 ---
-import { Code } from "astro/components";
-import Layout from "@/layouts/layout.astro";
-import profile_pict from "@/assets/profile_pict.jpg";
-import { Image } from "astro:assets";
+import Layout from "../layouts/layout.astro";
+import Header from "../components/Header.astro";
+import About from "../components/About.astro";
+import Navbar from "../components/Navbar.astro";
+import Educations from "../components/Educations.astro";
+import Skills from "../components/Skills.astro";
+import Project from "../components/Project.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../config";
 ---
 
-<Layout>
-	<div class="flex h-full flex-col gap-8 pt-8 md:grid md:grid-cols-[60%_1fr] md:px-12 md:py-24">
-		<div class="flex flex-col gap-1">
-			<p class="font-mono text-xl font-medium md:text-2xl">Hello all. I'm</p>
-			<h1 class="text-6xl font-bold md:text-8xl lg:text-9xl">Ahmad nur</h1>
-			<div class="code font-mono text-sm md:text-base">
-				<Code
-					code={`# you can also see it on my Github page\nlink: str = "https://github.com/ahmaadn"\nprint(link)`}
-					lang="python"
-					theme="css-variables"
-				/>
-				<span>&gt;&gt;&gt;&nbsp;</span><a
-					href="https://github.com/ahmaadn"
-					class="text-sky-700 hover:underline dark:text-sky-500">https://github.com/ahmaadn</a
-				>
-			</div>
-		</div>
-		<div class="flex h-full w-full items-center justify-center">
-			<div class="group relative w-56 lg:w-64">
-				<Image
-					src={profile_pict}
-					format="webp"
-					quality={90}
-					alt="Ahmad nur sahid"
-					class="overflow-hidden rounded-xl shadow-sm shadow-gray-300"
-				/>
-			</div>
-		</div>
+<Layout title="me">
+	<div
+		class="fixed left-0 top-0 z-0 h-[134px] w-[134px] rounded-full bg-orange-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
 	</div>
+	<div
+		class="fixed bottom-0 right-0 z-0 h-[134px] w-[134px] rounded-full bg-sky-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
+	</div>
+	<main id="top" class="space-y-4">
+		<Header
+			class="container max-w-5xl"
+			author={SITE.author}
+			position={SITE.position}
+			mail={SITE.mail}
+		/>
+		<Navbar />
+		<div class="lists container mt-4 max-w-5xl">
+			<About author={SITE.author} description={SITE.description} />
+			<Skills />
+			<Educations />
+			<Project />
+		</div>
+		<Footer class="container max-w-5xl py-16" mail={SITE.mail} />
+	</main>
 </Layout>
-<style>
-	.code {
-		--astro-code-color-background: transparent;
-		--astro-code-token-comment: #2b2c2d;
-		--astro-code-token-string-expression: #0369a1;
-		--astro-code-token-function: #dc2626;
-		--astro-code-token-constant: #dc2626;
-	}
-	:is(.dark .code) {
-		--astro-code-token-comment: #6b7280;
-		--astro-code-token-string-expression: #0ea5e9;
-		--astro-code-token-function: #ef4444;
-		--astro-code-token-constant: #ef4444;
+<style is:inline>
+	.lists > :not([hidden]) ~ :not([hidden]) {
+		padding-top: 5rem;
 	}
 </style>

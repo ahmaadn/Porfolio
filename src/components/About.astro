@@ -1,0 +1,27 @@
+---
+import Content from "./Content.astro";
+import SosialLink from "./Sosial-Link.astro";
+import Avatar from "./Avatar.astro";
+
+interface Props {
+	author: string;
+	description: string;
+}
+
+const { author, description } = Astro.props;
+---
+
+<Content id="me">
+	<div class="grid-cols-[60%_1fr] space-y-4 pb-2 md:grid md:space-y-0">
+		<div class="space-y-8">
+			<h1 class="text-3xl font-bold text-neutral-950 dark:text-neutral-100">
+				Hello <br /> I'm {author} 👋
+			</h1>
+			<div class="text-base">
+				{description}
+			</div>
+			<SosialLink />
+		</div>
+		<Avatar />
+	</div>
+</Content>

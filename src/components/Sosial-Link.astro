@@ -1,0 +1,21 @@
+---
+import * as CONFIG from "../config";
+---
+
+<ul class="sosial-links inline-flex text-sm">
+	{
+		CONFIG.SOSIAL_LINK.map(({ label, url }) => (
+			<li>
+				<a class="link italic" href={url}>
+					{label}
+				</a>
+			</li>
+		))
+	}
+</ul>
+<style>
+	.sosial-links > li:not(:first-child)::before {
+		content: "/";
+		padding: 0 8px;
+	}
+</style>

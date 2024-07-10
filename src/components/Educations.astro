@@ -1,0 +1,26 @@
+---
+import Content from "./Content.astro";
+import { EDUCATION } from "../config";
+---
+
+<Content
+	id="education"
+	title="Education"
+	class="flex w-full grid-cols-[1fr_60%_1fr] flex-col gap-6 space-y-0 md:grid md:gap-10">
+	<div class="col-span-2 w-full space-y-6 md:space-y-10">
+		{
+			EDUCATION.map((edu) => (
+				<div class="flex w-full flex-col gap-2 text-base font-semibold">
+					<div class="inline-flex flex-wrap justify-between">
+						<h4 class="text-lg font-bold text-orange-600">{edu.institute}</h4>
+						<span>
+							{edu.from} - {edu.to}
+						</span>
+					</div>
+					<p>{edu.location}</p>
+					<p>{edu.course}</p>
+				</div>
+			))
+		}
+	</div>
+</Content>
