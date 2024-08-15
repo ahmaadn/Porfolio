@@ -2,6 +2,7 @@
 import Content from "./Content.astro";
 import { Icon } from "astro-iconify";
 import { PROJECTS } from "../config";
+import Badge from "./Badge.astro";
 ---
 
 <Content id="project" title="Project">
@@ -9,7 +10,7 @@ import { PROJECTS } from "../config";
 		{
 			PROJECTS.map(({ name, tags, url }) => (
 				<a
-					class="inline-flex w-full items-center gap-2 rounded-md border-2 border-neutral-300 p-4 opacity-80 transition-all duration-300 hover:border-orange-600 hover:opacity-100 hover:shadow-md hover:shadow-orange-600/50 dark:border-neutral-400"
+					class="card inline-flex w-full items-center gap-2 rounded-md border-2 border-neutral-300 p-4 opacity-80 transition-all duration-300 dark:border-neutral-400"
 					href={url}>
 					<div class="flex-1 font-semibold">
 						<p class="mb-4 text-sm">MAR 14, 2024</p>
@@ -17,9 +18,7 @@ import { PROJECTS } from "../config";
 						<p class="text-sm">Mambuat website ecommers sederhana </p>
 						<div class="mt-2 inline-flex flex-wrap gap-2">
 							{tags.map((tag) => (
-								<span class="inline-flex items-center justify-center rounded-sm bg-neutral-300 px-2 text-sm text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200">
-									{tag}
-								</span>
+								<Badge>{tag}</Badge>
 							))}
 						</div>
 					</div>
@@ -31,3 +30,13 @@ import { PROJECTS } from "../config";
 		}
 	</div>
 </Content>
+<style>
+	.card {
+		@apply hover:border-orange-600 hover:opacity-100 hover:shadow-md hover:shadow-orange-600/50;
+	}
+	@media screen and (max-width: 768px) {
+		.card {
+			@apply border-orange-600 opacity-100 shadow-md shadow-orange-600/50;
+		}
+	}
+</style>

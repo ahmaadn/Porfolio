@@ -1,10 +1,10 @@
 ---
-import * as CONFIG from "../config";
+import { SOSIAL_LINK } from "../config";
 ---
 
 <ul class="sosial-links inline-flex text-sm">
 	{
-		CONFIG.SOSIAL_LINK.map(({ label, url }) => (
+		SOSIAL_LINK.map(({ label, url }) => (
 			<li>
 				<a class="link italic" href={url}>
 					{label}
