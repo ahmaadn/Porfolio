@@ -4,7 +4,7 @@ export const SITE = {
 	mail: "ahmadnur415@gmail.com",
 	position: "Fullstack",
 	description:
-		"Halo, saya Ahmad Nur Sahid, biasa dipanggil Ahmad. Saya lahir pada tanggal 5 Agustus. Hobi utama saya adalah bermain game mobile dan coding. Saat ini, saya merupakan mahasiswa Teknik  Informatika di Institut Teknologi Garut. Minat saya terhadap bahasa pemrograman muncul sejak remaja, dan awalnya saya belajar pemrograman ketika masih di sekolah menengah kejuruan (SMK). Bahasa pertama yang saya pelajari adalah Python.",
+		"Halo, saya Ahmad Nur Sahid, biasa dipanggil Ahmad. Saat ini saya berumur 20 tahun. Hobi utama saya adalah bermain game mobile dan coding. Saat ini, saya merupakan mahasiswa Teknik  Informatika di Institut Teknologi Garut. Minat saya terhadap bahasa pemrograman muncul sejak remaja, dan awalnya saya belajar pemrograman ketika masih di sekolah menengah kejuruan (SMK). Bahasa pertama yang saya pelajari adalah Python.",
 };
 
 export const SOSIAL_LINK = [{ label: "Github", url: "https://github.com/ahmaadn" }];
