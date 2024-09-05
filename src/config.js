@@ -4,7 +4,7 @@ export const SITE = {
 	mail: "ahmadnur415@gmail.com",
 	position: "Fullstack",
 	description:
-		"Halo, saya Ahmad Nur Sahid, biasa dipanggil Ahmad. Saat ini saya berumur 20 tahun. Hobi utama saya adalah bermain game mobile dan coding. Saat ini, saya merupakan mahasiswa Teknik  Informatika di Institut Teknologi Garut. Minat saya terhadap bahasa pemrograman muncul sejak remaja, dan awalnya saya belajar pemrograman ketika masih di sekolah menengah kejuruan (SMK). Bahasa pertama yang saya pelajari adalah Python.",
+		"Saya adalah seorang Fullstack Developer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti FastAPI, Vue.js, dan Astro. Saya juga memiliki pengalaman di bidang backend serta pernah mengikuti pelatihan di bidang keamanan siber. Berpengalaman bekerja dengan tim dalam proyek e-commerce serta selalu tertarik untuk mengembangkan keterampilan di bidang teknologi terbaru",
 };
 
 export const SOSIAL_LINK = [{ label: "Github", url: "https://github.com/ahmaadn" }];
