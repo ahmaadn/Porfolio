@@ -1,44 +1,9 @@
 ---
-import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/layout.astro";
-import Avatar from "../components/Avatar.astro";
-import Heading from "../components/Heading.astro";
+import SiteHeading from "../components/SiteHeading.astro";
 import { SITE } from "../config";
-import LatestProject from "../components/LatestProject.astro";
 ---
 
 <Layout title="me" description={SITE.description}>
-	<div id="site-heading">
-		<div class="relative min-h-screen w-full overflow-x-hidden">
-			<header class='min-h-[56px]" container mx-auto'>
-				<Navbar />
-			</header>
-			<div class="container mx-auto">
-				<Heading />
-				<div class="mt-16 flex flex-col gap-y-2 md:mt-8">
-					<p class="text-2xl font-medium">Latest Project</p>
-					<LatestProject />
-				</div>
-				<div>
-					<div class="absolute top-28 -z-10 md:left-24 lg:left-96">
-						<p
-							class="text-[15rem] font-bold text-neutral-400 md:text-[20rem] dark:text-neutral-500">
-							Porfolio
-						</p>
-					</div>
-					<div class="rectangle absolute -z-10 bg-blue-600/80 dark:bg-orange-600/80"></div>
-					<div class="rectangle-2 absolute -z-10 bg-blue-700/60 dark:bg-orange-700/60"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<SiteHeading />
 </Layout>
-<style>
-	.rectangle {
-		@apply absolute -left-[275px] -top-[360px] h-[1000px] w-[2000px] rotate-[350deg];
-	}
-
-	.rectangle-2 {
-		@apply absolute -left-[268px] -top-[348px] h-[1200px] w-[2000px] rotate-[10deg] md:h-[1000px] lg:h-[850px];
-	}
-</style>
