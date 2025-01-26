@@ -1,41 +1,43 @@
 ---
-import Layout from "../layouts/layout.astro";
-import Header from "../components/Header.astro";
-import About from "../components/About.astro";
 import Navbar from "../components/Navbar.astro";
-import Educations from "../components/Educations.astro";
-import Skills from "../components/Skills.astro";
-import Project from "../components/Project.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../layouts/layout.astro";
+import Avatar from "../components/Avatar.astro";
+import Heading from "../components/Heading.astro";
 import { SITE } from "../config";
+import LatestProject from "../components/LatestProject.astro";
 ---
 
 <Layout title="me" description={SITE.description}>
-	<div
-		class="fixed left-0 top-0 z-0 h-[134px] w-[134px] rounded-full bg-orange-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
-	</div>
-	<div
-		class="fixed bottom-0 right-0 z-0 h-[134px] w-[134px] rounded-full bg-sky-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
-	</div>
-	<main id="top" class="space-y-4">
-		<Header
-			class="container max-w-5xl"
-			author={SITE.author}
-			position={SITE.position}
-			mail={SITE.mail}
-		/>
-		<Navbar />
-		<div class="lists container mt-4 max-w-5xl">
-			<About author={SITE.author} description={SITE.description} />
-			<Skills />
-			<Educations />
-			<Project />
+	<div id="site-heading">
+		<div class="relative min-h-screen w-full overflow-x-hidden">
+			<header class='min-h-[56px]" container mx-auto'>
+				<Navbar />
+			</header>
+			<div class="container mx-auto">
+				<Heading />
+				<div class="mt-14 flex flex-col gap-y-2">
+					<p class="text-xl font-normal">Latest Project</p>
+					<LatestProject />
+				</div>
+				<div>
+					<div class="absolute top-28 -z-10 md:left-24 lg:left-96">
+						<p class="text-[20rem] font-bold text-neutral-400 dark:text-neutral-500">
+							Porfolio
+						</p>
+					</div>
+					<div class="rectangle absolute -z-10 bg-blue-600/80 dark:bg-orange-600/80"></div>
+					<div class="rectangle-2 absolute -z-10 bg-blue-700/60 dark:bg-orange-700/60"></div>
+				</div>
+			</div>
 		</div>
-		<Footer class="container max-w-5xl py-16" mail={SITE.mail} />
-	</main>
+	</div>
 </Layout>
-<style is:inline>
-	.lists > :not([hidden]) ~ :not([hidden]) {
-		padding-top: 5rem;
+<style>
+	.rectangle {
+		@apply absolute -left-[275px] -top-[360px] h-[1000px] w-[2000px] rotate-[350deg];
+	}
+
+	.rectangle-2 {
+		@apply absolute -left-[268px] -top-[348px] h-[1200px] w-[2000px] rotate-[10deg] md:h-[1000px] lg:h-[850px];
 	}
 </style>

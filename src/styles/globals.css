@@ -6,32 +6,26 @@
 	@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 }
 
-.link {
-	@apply no-underline transition-colors;
-}
-
-.link:hover {
-	@apply text-orange-600 underline underline-offset-2;
-}
-
-/*
-* {
-	@apply text-base text-base-content;
-}
-
-html {
-	@apply bg-base-100;
-}
-
-.sosial-links > li:not(:first-child)::before {
-	content: "/";
-	padding: 0 8px;
+body {
+	@apply bg-neutral-100 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
 }
 
 .link {
-	@apply text-base-content/70 no-underline transition-colors;
+	@apply text-neutral-700 underline-offset-2 transition-colors hover:text-neutral-800 hover:underline dark:text-neutral-300 dark:hover:text-neutral-200;
 }
 
-.link:hover {
-	@apply text-primary underline underline-offset-2;
-} */
+#site-heading {
+	@apply text-neutral-300;
+}
+
+#site-heading .link {
+	@apply text-neutral-300 hover:text-neutral-200;
+}
+
+.badge {
+	@apply rounded-sm bg-neutral-700 px-4 py-0.5 text-center text-xs font-medium capitalize text-neutral-300 dark:bg-neutral-300 dark:text-neutral-800;
+}
+
+#site-heading .badge {
+	@apply bg-neutral-300 text-neutral-800;
+}

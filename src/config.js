@@ -37,4 +37,17 @@ export const PROJECTS = [
 		tags: ["Astro", "Vue", "FastApi"],
 		url: "https://github.com/ahmaadn/ecommerce-astro-vue-fastapi",
 	},
+	{
+		name: "Sistem Donasi",
+		tags: ["pho", "laravel", "bootstrap"],
+		url: "https://github.com/ahmaadn/sistem-donasi-laravel",
+	},
+	{
+		name: "Frontend Kasir Apotek",
+		tags: ["Vue", "tailwind", "dashboard"],
+		url: "https://github.com/ahmaadn/frontend-kasir-apotek-vuejs",
+		descShort: "Frontend kasir apotek ini dibuat menggunakan Vue.js dan Tailwind CSS",
+		desc: "Frontend kasir apotek ini dibuat menggunakan Vue.js dan Tailwind CSS. Aplikasi ini memiliki fitur keloka obat, kelola pegawai, kelola kategori, kelola batch obat, selain itu juga aplikasi ini juga dilengkapi transksi penjualan obat.",
+		latest: true,
+	},
 ];
