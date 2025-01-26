@@ -38,13 +38,6 @@ const { title, description, image = "/images/profile_pict_3.jpg" } = Astro.props
 		/>
 		<slot name="head" />
 		<meta name="generator" content={Astro.generator} />
-		<script is:inline>
-			const setDarkMode = () => {
-				const currentTheme = localStorage.getItem("ui-theme") || "dark";
-				document.documentElement.setAttribute("data-theme", currentTheme);
-			};
-			setDarkMode();
-		</script>
 	</head>
 	<body>
 		<slot />
