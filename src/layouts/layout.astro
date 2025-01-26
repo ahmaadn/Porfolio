@@ -2,7 +2,6 @@
 import "../styles/globals.css";
 import { SEO } from "astro-seo";
 import { SITE } from "../config";
-import defaultImage from "../assets/images/profile_pict_3.jpg";
 
 interface Props {
 	title?: string;
@@ -11,7 +10,7 @@ interface Props {
 	image?: string;
 }
 
-const { title, description, image = defaultImage.src } = Astro.props;
+const { title, description, image = "/images/profile_pict_3.jpg" } = Astro.props;
 ---
 
 <html lang="en">
