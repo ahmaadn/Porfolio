@@ -1,8 +1,10 @@
 export const SITE = {
 	title: "Ahmaadn",
 	author: "Ahmad nur sahid",
-	mail: "ahmadnur415@gmail.com",
+	email: "ahmadnur415@gmail.com",
 	position: "Fullstack",
+	shortDercription:
+		"seorang Fullstack Developer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti FastAPI, Vue.js, dan Astro",
 	description:
 		"Saya adalah seorang Fullstack Developer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti FastAPI, Vue.js, dan Astro. Saya juga memiliki pengalaman di bidang backend serta pernah mengikuti pelatihan di bidang keamanan siber. Berpengalaman bekerja dengan tim dalam proyek e-commerce serta selalu tertarik untuk mengembangkan keterampilan di bidang teknologi terbaru",
 };
