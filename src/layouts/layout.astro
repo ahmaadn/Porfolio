@@ -10,7 +10,7 @@ interface Props {
 	image?: string;
 }
 
-const { title, description, image = "/images/profile_pict_3.jpg" } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
@@ -29,7 +29,7 @@ const { title, description, image = "/images/profile_pict_3.jpg" } = Astro.props
 				basic: {
 					title: SITE.title,
 					type: "website",
-					image: image,
+					image: "images/profile_pict_3.jpg",
 				},
 				optional: {
 					description: description,
