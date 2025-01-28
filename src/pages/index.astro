@@ -2,8 +2,17 @@
 import Layout from "../layouts/layout.astro";
 import SiteHeading from "../components/SiteHeading.astro";
 import { SITE } from "../config";
+import Educations from "../components/Educations.astro";
+import Skills from "../components/Skills.astro";
+import Heading from "../components/Heading.astro";
 ---
 
 <Layout title="me" description={SITE.description}>
-	<SiteHeading />
+	<div class="relative overflow-x-hidden">
+		<SiteHeading>
+			<Heading />
+		</SiteHeading>
+		<main class="container relative mt-16 max-w-7xl">
+		</main>
+	</div>
 </Layout>

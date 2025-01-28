@@ -1,13 +1,12 @@
 ---
-import Heading from "./Heading.astro";
 import Navbar from "./Navbar.astro";
 ---
 
-<div id="site-heading">
-	<div class="relative min-h-screen w-full overflow-x-hidden">
-		<header class='min-h-[56px]" container mx-auto'>
+<div id="site-heading" class="container max-w-7xl">
+	<div class="min-h-screen w-full">
+		<header class='min-h-[56px]"'>
 			<Navbar />
 		</header>
-		<Heading />
+		<slot />
 	</div>
 </div>
