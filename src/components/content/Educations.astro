@@ -1,9 +1,9 @@
 ---
-import Content from "./Content.astro";
-import { EDUCATION } from "../config";
+import BaseContent from "./BaseContent.astro";
+import { EDUCATION } from "../../config";
 ---
 
-<Content
+<BaseContent
 	id="education"
 	title="Education"
 	class="flex w-full grid-cols-[1fr_60%_1fr] flex-col gap-6 space-y-0 md:grid md:gap-10">
@@ -23,4 +23,4 @@ import { EDUCATION } from "../config";
 			))
 		}
 	</div>
-</Content>
+</BaseContent>

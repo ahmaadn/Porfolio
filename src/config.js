@@ -4,9 +4,13 @@ export const SITE = {
 	email: "ahmadnur415@gmail.com",
 	position: "Fullstack",
 	shortDercription:
-		"seorang Fullstack Developer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti FastAPI, Vue.js, dan Astro",
-	description:
-		"Saya adalah seorang Fullstack Developer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti FastAPI, Vue.js, dan Astro. Saya juga memiliki pengalaman di bidang backend serta pernah mengikuti pelatihan di bidang keamanan siber. Berpengalaman bekerja dengan tim dalam proyek e-commerce serta selalu tertarik untuk mengembangkan keterampilan di bidang teknologi terbaru",
+		"Seorang software engineer dengan pengalaman dalam mengembangkan aplikasi web menggunakan berbagai teknologi seperti Vue.js, FastApi, dan PostgreSQL.",
+	description: [
+		"Hai, saya Ahmad Nur Sahid. Saya seorang software engineer yang berbasis di Indonesia. Saya memiliki pengalaman dalam membangun aplikasi web menggunakan teknologi modern seperti Vue.js, FastApi, dan PostgreSQL.",
+		"Saat ini saya sedang menempuh pendidikan di Institut Teknologi Garut. Saya selalu mencari kesempatan baru untuk belajar dan berkembang sebagai mahasiswa. Saya juga terbuka untuk pekerjaan freelance, jadi jangan ragu untuk menghubungi saya jika Anda memiliki proyek yang ingin Anda kerjakan.",
+		//"Selama karier saya sebagai mahasiswa",
+		//"Saya telah membangun situs web e-commerce sederhana, frontend pengguna kasir apotek, dan platform donasi. Proyek-proyek ini telah memungkinkan saya untuk menerapkan keterampilan teknis saya dalam skenario dunia nyata, mulai dari mengembangkan antarmuka yang mudah digunakan hingga mengoptimalkan kinerja basis data.",
+	],
 };
 
 export const SOSIAL_LINK = [{ label: "Github", url: "https://github.com/ahmaadn" }];

@@ -1,0 +1,16 @@
+---
+import { cn } from "../../lib/utils";
+interface Props {
+	id: string;
+	title?: string;
+	class?: string;
+}
+const { id, title, class: className } = Astro.props;
+---
+
+<section class={cn("relative space-y-4", className)} id={id}>
+	<div class="container max-w-7xl">
+		{title && <h1 class="mb-6 text-5xl font-bold md:text-6xl">{title}</h1>}
+		<slot />
+	</div>
+</section>

@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-iconify";
-import Content from "./Content.astro";
+import BaseContent from "./BaseContent.astro";
 
 interface Props {
 	class?: string;
@@ -8,7 +8,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<Content id="skills" title="Skills" class={className}>
+<BaseContent id="skills" title="Skills" class={className}>
 	<div
 		class="inline-flex flex-wrap items-center gap-3 py-2 text-neutral-950 dark:text-neutral-100">
 		<Icon name="simple-icons:astro" />
@@ -21,7 +21,7 @@ const { class: className } = Astro.props;
 		<Icon name="logos:typescript-icon" />
 		<Icon name="logos:javascript" />
 	</div>
-</Content>
+</BaseContent>
 <style>
 	svg {
 		width: 32px;

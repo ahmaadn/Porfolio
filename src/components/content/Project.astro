@@ -1,11 +1,11 @@
 ---
-import Content from "./Content.astro";
+import BaseContent from "./BaseContent.astro";
 import { Icon } from "astro-iconify";
-import { PROJECTS } from "../config";
-import Badge from "./Badge.astro";
+import { PROJECTS } from "../../config";
+import Badge from "../Badge.astro";
 ---
 
-<Content id="project" title="Project">
+<BaseContent id="project" title="Project">
 	<div class="flex flex-col gap-4">
 		{
 			PROJECTS.map(({ name, tags, url }) => (
@@ -29,7 +29,7 @@ import Badge from "./Badge.astro";
 			))
 		}
 	</div>
-</Content>
+</BaseContent>
 <style>
 	.card {
 		@apply hover:border-orange-600 hover:opacity-100 hover:shadow-md hover:shadow-orange-600/50;
