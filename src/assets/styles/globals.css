@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-}
-
 body {
 	@apply bg-neutral-200 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
 }
