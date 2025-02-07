@@ -10,18 +10,6 @@ body {
 	@apply text-neutral-700 underline-offset-2 transition-colors hover:text-neutral-800 hover:underline dark:text-neutral-300 dark:hover:text-neutral-200;
 }
 
-#site-heading {
-	@apply text-neutral-300;
-}
-
-#site-heading .link {
-	@apply text-neutral-300 hover:text-neutral-200;
-}
-
 .badge {
 	@apply rounded-sm bg-neutral-700 px-3 py-0.5 text-center text-xs font-medium capitalize text-neutral-300 dark:bg-neutral-300 dark:text-neutral-800;
-}
-
-#site-heading .badge {
-	@apply border border-neutral-300 bg-transparent text-neutral-300;
 }

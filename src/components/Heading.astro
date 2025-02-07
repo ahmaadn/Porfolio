@@ -3,29 +3,32 @@ import ContentHeading from "./ContentHeading.astro";
 import LatestProject from "./LatestProject.astro";
 ---
 
-<div>
+<div class="mt-6 md:mt-12">
 	<ContentHeading />
-	<div class="mt-10 flex flex-col gap-y-2 md:mt-8">
+	<div class="mt-14 flex flex-col gap-y-2 md:mt-20">
 		<p class="text-2xl font-medium">Latest Project</p>
 		<LatestProject />
 	</div>
 	<div>
-		<div class="absolute top-28 -z-10 md:left-24 lg:left-96">
+		<div class="absolute top-28 -z-10 md:left-24">
 			<p class="text-[15rem] font-bold text-neutral-400 md:text-[20rem] dark:text-neutral-500">
 				Porfolio
 			</p>
 		</div>
-		<div class="rectangle -z-10 bg-blue-600/80 dark:bg-orange-600/80"></div>
-		<div class="rectangle-2 -z-10 bg-blue-700/60 dark:bg-orange-700/60"></div>
+		<div
+			class="rectangle -z-10 bg-blue-600 md:bg-blue-600/80 dark:bg-orange-600 dark:md:bg-orange-600/80">
+		</div>
+		<!-- <div class="rectangle -z-10 block bg-blue-600/80 md:hidden dark:bg-orange-600/80"></div> -->
+		<div class="rectangle-2 -z-10 hidden bg-blue-700/60 md:block dark:bg-orange-700/60"></div>
 	</div>
 </div>
 
 <style>
 	.rectangle {
-		@apply absolute -left-[275px] -top-[360px] h-[890px] w-[2000px] rotate-[350deg] md:h-[1000px];
+		@apply absolute -left-[275px] -top-[360px] h-[980px] w-[2000px] rotate-[350deg] md:h-[1000px];
 	}
 
 	.rectangle-2 {
-		@apply absolute -left-[268px] -top-[348px] h-[1000px] w-[2000px] rotate-[10deg] md:h-[1000px] lg:h-[850px];
+		@apply absolute -left-[268px] -top-[348px] h-[1130px] w-[2000px] rotate-[10deg] md:h-[1000px] lg:h-[850px];
 	}
 </style>

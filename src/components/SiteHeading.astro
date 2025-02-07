@@ -1,12 +1,23 @@
 ---
-import Navbar from "./Navbar.astro";
+
 ---
 
 <div id="site-heading" class="container max-w-7xl">
 	<div class="h-full w-full">
-		<header class='min-h-[56px]"'>
-			<Navbar />
-		</header>
 		<slot />
 	</div>
 </div>
+
+<style is:global>
+	#site-heading {
+		@apply text-neutral-300;
+	}
+
+	#site-heading .link {
+		@apply text-neutral-300 hover:text-neutral-200;
+	}
+
+	#site-heading .badge {
+		@apply border border-neutral-300 bg-transparent text-neutral-300;
+	}
+</style>
