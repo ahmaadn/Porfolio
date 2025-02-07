@@ -1,13 +1,16 @@
 ---
+import { cn } from "@/lib/utils";
 import { Icon } from "astro-iconify";
+
+const { class: className } = Astro.props;
 ---
 
 <button
-	class="inline-flex h-8 w-8 items-center justify-center"
+	class={cn("inline-flex h-8 w-8 items-center justify-center", className)}
 	id="theme-button"
 	aria-label="theme-button">
-	<Icon size="18" name="lucide:moon" class="block dark:hidden" />
-	<Icon size="18" name="lucide:sun" class="hidden dark:block" />
+	<Icon size="22" name="radix-icons:moon" class="block dark:hidden" />
+	<Icon size="22" name="radix-icons:sun" class="hidden dark:block" />
 </button>
 
 <script is:inline>

@@ -8,9 +8,9 @@ interface Props {
 const { id, title, class: className } = Astro.props;
 ---
 
-<section class={cn("relative space-y-4", className)} id={id}>
+<section class={cn("relative ", className)} id={id}>
 	<div class="container max-w-7xl">
-		{title && <h1 class="mb-6 text-5xl font-bold md:text-6xl">{title}</h1>}
+		{title && <h1 class="mb-8 text-4xl font-bold capitalize md:text-5xl">{title}</h1>}
 		<slot />
 	</div>
 </section>
