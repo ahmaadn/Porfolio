@@ -4,7 +4,11 @@ import BaseContent from "./BaseContent.astro";
 import { EDUCATION } from "@/config";
 ---
 
-<BaseContent id="education" title="Education" class="flex flex-col md:flex-row md:gap-x-16">
+<BaseContent
+	id="education"
+	title="Education"
+	background-text="Education"
+	class="flex flex-col md:flex-row md:gap-x-16">
 	<ol class="w-full space-y-12 overflow-hidden">
 		{
 			EDUCATION.map((edu) => (
