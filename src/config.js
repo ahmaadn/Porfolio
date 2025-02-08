@@ -17,18 +17,18 @@ export const SOSIAL_LINK = [{ label: "Github", url: "https://github.com/ahmaadn"
 
 export const EDUCATION = [
 	{
-		from: "2019",
-		to: "2022",
-		institute: "SMKS AL-Farisi Leles",
-		course: "Teknik Komputer Dan Jaringan",
-		location: "Leles, Garut",
-	},
-	{
 		from: "2022",
 		to: "Now",
 		institute: "Institut Teknologi Garut",
 		course: "Teknik Informatika",
 		location: "Garut, Jawa Barat",
+	},
+	{
+		from: "2019",
+		to: "2022",
+		institute: "SMKS AL-Farisi Leles",
+		course: "Teknik Komputer Dan Jaringan",
+		location: "Leles, Garut",
 	},
 ];
 

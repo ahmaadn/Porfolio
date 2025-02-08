@@ -1,26 +1,46 @@
 ---
+import Icon from "astro-iconify";
 import BaseContent from "./BaseContent.astro";
 import { EDUCATION } from "@/config";
 ---
 
-<BaseContent
-	id="education"
-	title="Education"
-	class="flex w-full grid-cols-[1fr_60%_1fr] flex-col gap-6 space-y-0 md:grid md:gap-10">
-	<div class="col-span-2 w-full space-y-6 md:space-y-10">
+<BaseContent id="education" title="Education" class="flex flex-col md:flex-row md:gap-x-16">
+	<ol class="w-full space-y-12 overflow-hidden">
 		{
 			EDUCATION.map((edu) => (
-				<div class="flex w-full flex-col gap-2 text-base font-semibold">
-					<div class="inline-flex flex-wrap justify-between">
-						<h2 class="text-lg font-bold text-orange-600">{edu.institute}</h2>
-						<span>
-							{edu.from} - {edu.to}
+				<li class="step">
+					<div class="flex w-full items-start font-medium">
+						<span class="mr-8 flex aspect-square h-8 w-8 items-center justify-center rounded-full border-2 border-transparent bg-blue-600 text-sm text-white lg:h-10 lg:w-10 dark:bg-orange-600">
+							<Icon name="mdi:education-outline" class="h-6 w-6 md:h-7 md:w-7" />
 						</span>
+						<div class="block w-full space-y-2">
+							<div class="flex flex-col gap-y-2 md:flex-row md:items-center md:justify-between">
+								<h4 class="text-xl font-bold text-black dark:text-white">
+									{edu.institute}
+								</h4>
+								<span>
+									{edu.from} - {edu.to}
+								</span>
+							</div>
+							<p class="text-sm text-blue-600 dark:text-orange-600">{edu.location}</p>
+							<p class="">{edu.course}</p>
+						</div>
 					</div>
-					<p>{edu.location}</p>
-					<p>{edu.course}</p>
-				</div>
+				</li>
 			))
 		}
-	</div>
+	</ol>
 </BaseContent>
+
+<style>
+	.step {
+		@apply relative flex-1 after:absolute after:left-4 after:inline-block after:h-full after:content-[''] lg:after:left-5;
+	}
+	.step:not(:last-child) {
+		@apply after:-bottom-11 after:w-0.5 after:bg-blue-600 dark:after:bg-orange-600;
+	}
+
+	.step:last-child {
+		@apply z-10 after:-bottom-12 after:z-0;
+	}
+</style>
