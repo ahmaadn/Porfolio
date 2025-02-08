@@ -1,30 +1,26 @@
 ---
-import { Icon } from "astro-iconify";
+import Chips from "../Chips.astro";
 import BaseContent from "./BaseContent.astro";
-
-interface Props {
-	class?: string;
-}
-const { class: className } = Astro.props;
 ---
 
-<BaseContent id="skills" title="Skills" class={className}>
-	<div
-		class="inline-flex flex-wrap items-center gap-3 py-2 text-neutral-950 dark:text-neutral-100">
-		<Icon name="simple-icons:astro" />
-		<Icon name="logos:vue" />
-		<Icon name="logos:tailwindcss-icon" />
-		<Icon name="logos:python" />
-		<Icon name="logos:fastapi-icon" />
-		<Icon name="logos:html-5" />
-		<Icon name="logos:css-3" />
-		<Icon name="logos:typescript-icon" />
-		<Icon name="logos:javascript" />
+<BaseContent id="skills" title="Tech Stack">
+	<div class="space-y-4">
+		<div>
+			<h1 class="mb-4 text-2xl font-normal dark:text-white">Frontend</h1>
+			<div class="inline-flex w-full flex-wrap items-center gap-3 py-2">
+				<Chips name="Astro" icon="simple-icons:astro" />
+				<Chips name="Vue" icon="logos:vue" />
+				<Chips name="TailwindCSS" icon="logos:tailwindcss-icon" />
+				<Chips name="Typescript" icon="logos:typescript-icon" />
+				<Chips name="Laravel" icon="logos:laravel" />
+			</div>
+		</div>
+		<div>
+			<h1 class="mb-4 text-2xl font-normal dark:text-white">Backend</h1>
+			<div class="inline-flex w-full flex-wrap items-center gap-3 py-2">
+				<Chips name="Python" icon="logos:python" />
+				<Chips name="Fastapi" icon="logos:fastapi-icon" />
+			</div>
+		</div>
 	</div>
 </BaseContent>
-<style>
-	svg {
-		width: 32px;
-		height: 32px;
-	}
-</style>
