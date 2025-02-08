@@ -12,7 +12,7 @@ import { EDUCATION } from "@/config";
 	<ol class="w-full space-y-12 overflow-hidden">
 		{
 			EDUCATION.map((edu) => (
-				<li class="step">
+				<li class="relative flex-1 after:absolute after:-bottom-11 after:left-4 after:inline-block after:h-full after:w-0.5 after:bg-blue-600 after:content-[''] lg:after:left-5 dark:after:bg-orange-600">
 					<div class="flex w-full items-start font-medium">
 						<span class="mr-8 flex aspect-square h-8 w-8 items-center justify-center rounded-full border-2 border-transparent bg-blue-600 text-sm text-white lg:h-10 lg:w-10 dark:bg-orange-600">
 							<Icon name="mdi:education-outline" class="h-6 w-6 md:h-7 md:w-7" />
@@ -35,16 +35,3 @@ import { EDUCATION } from "@/config";
 		}
 	</ol>
 </BaseContent>
-
-<style>
-	.step {
-		@apply relative flex-1 after:absolute after:left-4 after:inline-block after:h-full after:content-[''] lg:after:left-5;
-	}
-	.step:not(:last-child) {
-		@apply after:-bottom-11 after:w-0.5 after:bg-blue-600 dark:after:bg-orange-600;
-	}
-
-	.step:last-child {
-		@apply z-10 after:-bottom-12 after:z-0;
-	}
-</style>
