@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply bg-neutral-200 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
+	@apply bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200;
 }
 
 .link {
