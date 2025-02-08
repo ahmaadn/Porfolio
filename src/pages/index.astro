@@ -5,6 +5,7 @@ import { SITE } from "@/config";
 import Heading from "@/components/Heading.astro";
 import About from "@/components/content/About.astro";
 import Header from "@/components/header/Header.astro";
+import Educations from "@/components/content/Educations.astro";
 ---
 
 <Layout title="me" description={SITE.shortDercription}>
@@ -13,8 +14,9 @@ import Header from "@/components/header/Header.astro";
 			<Header />
 			<Heading />
 		</SiteHeading>
-		<main class="mt-40 min-h-screen w-full space-y-20 md:mt-44 md:space-y-40">
+		<main class="mt-40 min-h-screen w-full space-y-20 md:mt-44 md:space-y-24">
 			<About />
+			<Educations />
 		</main>
 	</div>
 </Layout>
