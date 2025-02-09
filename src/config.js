@@ -51,7 +51,7 @@ export const PROJECTS = [
 	},
 	{
 		name: "Sistem Donasi",
-		tags: ["pho", "laravel", "bootstrap"],
+		tags: ["PHP", "laravel", "bootstrap"],
 		url: "https://github.com/ahmaadn/sistem-donasi-laravel",
 		desc: {
 			short: "Sistem donasi ini dibuat menggunakan Laravel, dan Bootstrap",
