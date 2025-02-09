@@ -19,8 +19,8 @@ const getImage = (path) => {
 };
 ---
 
-<BaseContent id="project" title="Project">
-	<div class="grid grid-cols-3 gap-8">
+<BaseContent id="project" title="Project" class="relative">
+	<div class="flex flex-col gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
 		{
 			PROJECTS.map(({ name, tags, url, desc, imageUrl }) => (
 				<Card>
