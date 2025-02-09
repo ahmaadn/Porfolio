@@ -11,5 +11,5 @@ body {
 }
 
 .badge {
-	@apply rounded-sm bg-neutral-700 px-3 py-0.5 text-center text-xs font-medium capitalize text-neutral-300 dark:bg-neutral-300 dark:text-neutral-800;
+	@apply rounded-sm bg-neutral-900 px-3 py-0.5 text-center text-xs font-medium capitalize text-neutral-200 dark:bg-neutral-100 dark:text-neutral-900;
 }
