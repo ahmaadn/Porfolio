@@ -13,7 +13,7 @@ let latestProject = PROJECTS.filter((project) => project?.latest || false)[0] ||
 			<a href={latestProject.url} target="_blank" class="link text-lg font-semibold"
 				>{latestProject.name}</a
 			>
-			<p class="text-sm">{latestProject.descShort}</p>
+			<p class="text-sm">{latestProject.desc.short}</p>
 		</div>
 		<div class="inline-flex flex-wrap gap-4">
 			{latestProject.tags.map((tag) => <Badge>{tag}</Badge>)}

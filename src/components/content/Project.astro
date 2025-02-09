@@ -1,42 +1,50 @@
 ---
 import BaseContent from "./BaseContent.astro";
-import { Icon } from "astro-iconify";
+import Badge from "../Badge.astro";
+import Chips from "../Chips.astro";
 import { PROJECTS } from "@/config";
-import Badge from "@/components/Badge.astro";
+import Card from "../Card.astro";
+import { Image } from "astro:assets";
+import CardContent from "../CardContent.astro";
+const imagePaths = import.meta.glob("/src/images/project/*.{jpeg,jpg,png,gif}");
+
+const getImage = (path) => {
+	const imagePath = imagePaths[path];
+	if (!imagePath) {
+		throw new Error(
+			`"${path}" does not exist in glob: "/src/images/project/*.{jpeg,jpg,png,gif}"`
+		);
+	}
+	return imagePath();
+};
 ---
 
 <BaseContent id="project" title="Project">
-	<div class="flex flex-col gap-4">
+	<div class="grid grid-cols-3 gap-8">
 		{
-			PROJECTS.map(({ name, tags, url }) => (
-				<a
-					class="card inline-flex w-full items-center gap-2 rounded-md border-2 border-neutral-300 p-4 opacity-80 transition-all duration-300 dark:border-neutral-400"
-					href={url}>
-					<div class="flex-1 font-semibold">
-						<p class="mb-4 text-sm">MAR 14, 2024</p>
-						<h2 class="text-base font-bold text-neutral-950 dark:text-neutral-100">{name}</h2>
-						<p class="text-sm">Mambuat website ecommers sederhana </p>
+			PROJECTS.map(({ name, tags, url, desc, imageUrl }) => (
+				<Card>
+					<div class="relative aspect-video">
+						<Image
+							src={getImage(imageUrl.thumbnail)}
+							alt=""
+							class="w-full object-cover transition-transform hover:scale-105"
+						/>
+					</div>
+					<CardContent>
+						<h3 class="text-lg font-bold sm:text-xl dark:text-white">{name}</h3>
 						<div class="mt-2 inline-flex flex-wrap gap-2">
 							{tags.map((tag) => (
 								<Badge>{tag}</Badge>
 							))}
 						</div>
-					</div>
-					<div>
-						<Icon size="20" name="ep:top-right" />
-					</div>
-				</a>
+						<p class="mt-4 max-w-sm overflow-hidden text-sm">{desc.short}</p>
+						<div class="mt-4 inline-flex flex-wrap gap-2">
+							<Chips name="github" icon="mdi:github" href={url} target="_blank" />
+						</div>
+					</CardContent>
+				</Card>
 			))
 		}
 	</div>
 </BaseContent>
-<style>
-	.card {
-		@apply hover:border-orange-600 hover:opacity-100 hover:shadow-md hover:shadow-orange-600/50;
-	}
-	@media screen and (max-width: 768px) {
-		.card {
-			@apply border-orange-600 opacity-100 shadow-md shadow-orange-600/50;
-		}
-	}
-</style>
