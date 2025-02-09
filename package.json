@@ -13,7 +13,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.5",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "astro": "^5.1.9",
+    "astro": "^5.2.5",
     "astro-iconify": "^1.2.0",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",
