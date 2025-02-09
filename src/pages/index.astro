@@ -8,6 +8,7 @@ import Header from "@/components/header/Header.astro";
 import Educations from "@/components/content/Educations.astro";
 import Skills from "@/components/content/Skills.astro";
 import Project from "@/components/content/Project.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
 <Layout title="me" description={SITE.shortDercription}>
@@ -16,11 +17,26 @@ import Project from "@/components/content/Project.astro";
 			<Header />
 			<Heading />
 		</SiteHeading>
-		<main class="mt-40 min-h-screen w-full space-y-20 md:mt-44 md:space-y-24">
+		<main class="mb-20 mt-40 min-h-screen w-full space-y-20 md:mt-44 md:space-y-24">
 			<About />
 			<Skills />
 			<Educations />
 			<Project />
+			<Footer mail="ahmadnr415@gmail.com" />
 		</main>
+		<div class="border-t border-neutral-200 dark:border-neutral-700">
+			<div class="container mx-auto max-w-7xl">
+				<div
+					class="flex w-full flex-col py-4 text-center text-sm md:flex-row md:justify-between">
+					<p>
+						© {new Date().getFullYear()}
+						{SITE.author} | All rights reserved.
+					</p>
+					<p class="mt-2">
+						Theme inspired by <a href="https://firebase.blog/" class="link">firebase blog</a>
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </Layout>
