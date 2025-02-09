@@ -1,8 +1,7 @@
 ---
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { SEO } from "astro-seo";
-import { SITE } from "../config";
-import defaultImage from "../assets/profile_pict_2.jpg";
+import { SITE } from "@/config";
 
 interface Props {
 	title?: string;
@@ -11,7 +10,7 @@ interface Props {
 	image?: string;
 }
 
-const { title, description, image = defaultImage.src } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
@@ -30,7 +29,7 @@ const { title, description, image = defaultImage.src } = Astro.props;
 				basic: {
 					title: SITE.title,
 					type: "website",
-					image: image,
+					image: "images/profile_pict_3.jpg",
 				},
 				optional: {
 					description: description,
@@ -39,22 +38,19 @@ const { title, description, image = defaultImage.src } = Astro.props;
 		/>
 		<slot name="head" />
 		<meta name="generator" content={Astro.generator} />
-		<script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-		></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/jquery-one-page-nav/3.0.0/jquery.nav.min.js"
-			integrity="sha512-I1SRWCuHnqVwlUXfm2TNMDduALHE1LfFpbQtFPY2z33Jy0iJAEXBDgrRrBLbpVChGclfCB0Hfy0F8wLVJtIVPQ=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"></script>
-		<script is:inline>
-			const setDarkMode = () => {
-				const currentTheme = localStorage.getItem("ui-theme") || "dark";
-				document.documentElement.setAttribute("data-theme", currentTheme);
-			};
-			setDarkMode();
-		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="sitemap" href="/sitemap-index.xml" />
 	</head>
-	<body class="bg-neutral-100 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-400">
+	<body>
 		<slot />
 	</body>
 </html>

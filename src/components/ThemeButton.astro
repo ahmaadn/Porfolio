@@ -1,0 +1,98 @@
+---
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-iconify";
+
+const { class: className } = Astro.props;
+---
+
+<button
+	class={cn("inline-flex h-8 w-8 items-center justify-center", className)}
+	id="theme-button"
+	aria-label="theme-button">
+	<Icon size="22" name="radix-icons:moon" class="block dark:hidden" />
+	<Icon size="22" name="radix-icons:sun" class="hidden dark:block" />
+</button>
+
+<script is:inline>
+	const storageKey = "theme-preference";
+	let pageLoading = true;
+
+	const onClick = () => {
+		// flip current value
+		theme.value = theme.value === "light" ? "dark" : "light";
+
+		setPreference();
+	};
+
+	const getColorPreference = () => {
+		if (localStorage.getItem(storageKey)) return localStorage.getItem(storageKey);
+		else return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+	};
+
+	const setPreference = () => {
+		localStorage.setItem(storageKey, theme.value);
+		reflectPreference();
+	};
+
+	const reflectPreference = () => {
+		function mutate() {
+			document.firstElementChild.setAttribute("data-theme", theme.value);
+
+			document.querySelector("#theme-button")?.setAttribute("aria-label", theme.value);
+		}
+
+		if (!pageLoading && document.startViewTransition)
+			document.startViewTransition(() => mutate());
+		else mutate();
+	};
+
+	const theme = {
+		value: getColorPreference(),
+	};
+
+	// set early so no page flashes / CSS is made aware
+	reflectPreference();
+
+	window.onload = () => {
+		// set on load so screen readers can see latest value on the button
+		reflectPreference();
+
+		// now this script can find and listen for clicks on the control
+		document.querySelector("#theme-button").addEventListener("click", onClick);
+
+		// Restore :root have a viewTransitionName
+		document.documentElement.style.viewTransitionName = "root";
+		pageLoading = false;
+	};
+
+	// sync with system changes
+	window
+		.matchMedia("(prefers-color-scheme: dark)")
+		.addEventListener("change", ({ matches: isDark }) => {
+			theme.value = isDark ? "dark" : "light";
+			setPreference();
+		});
+</script>
+<style is:global>
+	/* sourced from https://transition.style */
+	@keyframes circle-in-top-right {
+		from {
+			clip-path: circle(0%);
+		}
+		to {
+			clip-path: circle(150% at top right);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@media (width <= 1600px) {
+			::view-transition-old(root) {
+				animation: none;
+			}
+
+			::view-transition-new(root) {
+				animation: 1s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right both;
+			}
+		}
+	}
+</style>

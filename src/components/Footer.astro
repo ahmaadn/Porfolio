@@ -1,7 +1,7 @@
 ---
-import Content from "./Content.astro";
-import SosialLink from "./Sosial-Link.astro";
-import { cn } from "../lib/utils";
+import BaseContent from "./content/BaseContent.astro";
+import SosialLink from "./SosialLink.astro";
+import { cn } from "@/lib/utils";
 
 interface Props {
 	class?: string;
@@ -11,11 +11,13 @@ const { class: className, mail } = Astro.props;
 ---
 
 <footer class={cn(className)}>
-	<Content id="footer" title="Get in touch">
+	<BaseContent id="footer" title="Get in touch">
 		<p>
 			Email me at <a href=`mailto:${mail}` class="link italic">{mail}</a> linkor follow me via my
 			social links.
 		</p>
-		<SosialLink />
-	</Content>
+		<div class="mt-4">
+			<SosialLink />
+		</div>
+	</BaseContent>
 </footer>

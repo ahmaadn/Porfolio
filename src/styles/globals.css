@@ -2,36 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+body {
+	@apply bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200;
 }
 
 .link {
-	@apply no-underline transition-colors;
+	@apply text-neutral-700 underline-offset-2 transition-colors hover:text-neutral-800 hover:underline dark:text-neutral-300 dark:hover:text-neutral-200;
 }
 
-.link:hover {
-	@apply text-orange-600 underline underline-offset-2;
+.badge {
+	@apply rounded-sm bg-neutral-900 px-3 py-0.5 text-center text-xs font-medium capitalize text-neutral-200 dark:bg-neutral-100 dark:text-neutral-900;
 }
-
-/*
-* {
-	@apply text-base text-base-content;
-}
-
-html {
-	@apply bg-base-100;
-}
-
-.sosial-links > li:not(:first-child)::before {
-	content: "/";
-	padding: 0 8px;
-}
-
-.link {
-	@apply text-base-content/70 no-underline transition-colors;
-}
-
-.link:hover {
-	@apply text-primary underline underline-offset-2;
-} */

@@ -1,41 +1,42 @@
 ---
-import Layout from "../layouts/layout.astro";
-import Header from "../components/Header.astro";
-import About from "../components/About.astro";
-import Navbar from "../components/Navbar.astro";
-import Educations from "../components/Educations.astro";
-import Skills from "../components/Skills.astro";
-import Project from "../components/Project.astro";
-import Footer from "../components/Footer.astro";
-import { SITE } from "../config";
+import Layout from "@/layouts/layout.astro";
+import SiteHeading from "@/components/SiteHeading.astro";
+import { SITE } from "@/config";
+import Heading from "@/components/Heading.astro";
+import About from "@/components/content/About.astro";
+import Header from "@/components/header/Header.astro";
+import Educations from "@/components/content/Educations.astro";
+import Skills from "@/components/content/Skills.astro";
+import Project from "@/components/content/Project.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
-<Layout title="me" description={SITE.description}>
-	<div
-		class="fixed left-0 top-0 z-0 h-[134px] w-[134px] rounded-full bg-orange-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
-	</div>
-	<div
-		class="fixed bottom-0 right-0 z-0 h-[134px] w-[134px] rounded-full bg-sky-500 opacity-50 blur-[150px] md:blur-[350px] lg:h-[300px] lg:w-[300px]">
-	</div>
-	<main id="top" class="space-y-4">
-		<Header
-			class="container max-w-5xl"
-			author={SITE.author}
-			position={SITE.position}
-			mail={SITE.mail}
-		/>
-		<Navbar />
-		<div class="lists container mt-4 max-w-5xl">
-			<About author={SITE.author} description={SITE.description} />
+<Layout title="me" description={SITE.shortDercription}>
+	<div class="relative overflow-x-hidden">
+		<SiteHeading>
+			<Header />
+			<Heading />
+		</SiteHeading>
+		<main class="mb-20 mt-40 min-h-screen w-full space-y-20 md:mt-44 md:space-y-24">
+			<About />
 			<Skills />
 			<Educations />
 			<Project />
+			<Footer mail="ahmadnr415@gmail.com" />
+		</main>
+		<div class="border-t border-neutral-200 dark:border-neutral-700">
+			<div class="container mx-auto max-w-7xl">
+				<div
+					class="flex w-full flex-col py-4 text-center text-sm md:flex-row md:justify-between">
+					<p>
+						© {new Date().getFullYear()}
+						{SITE.author} | All rights reserved.
+					</p>
+					<p class="mt-2">
+						Theme inspired by <a href="https://firebase.blog/" class="link">firebase blog</a>
+					</p>
+				</div>
+			</div>
 		</div>
-		<Footer class="container max-w-5xl py-16" mail={SITE.mail} />
-	</main>
+	</div>
 </Layout>
-<style is:inline>
-	.lists > :not([hidden]) ~ :not([hidden]) {
-		padding-top: 5rem;
-	}
-</style>

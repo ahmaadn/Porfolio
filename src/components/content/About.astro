@@ -1,0 +1,14 @@
+---
+import BaseContent from "./BaseContent.astro";
+import Avatar from "@/components/Avatar.astro";
+import { SITE } from "@/config";
+---
+
+<BaseContent id="me" title="About me" background-text="About me">
+	<div class="flex flex-col gap-y-8 md:flex-row">
+		<Avatar />
+		<div class="space-y-4 md:text-lg">
+			{SITE.description.map((desc) => <p>{desc}</p>)}
+		</div>
+	</div>
+</BaseContent>
