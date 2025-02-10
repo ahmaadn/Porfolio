@@ -69,7 +69,7 @@ export const PROJECTS = [
 	},
 	{
 		name: "Frontend Kasir Apotek",
-		tags: ["Vue", "tailwind", "dashboard"],
+		tags: ["Vue", "tailwind"],
 		url: "https://github.com/ahmaadn/frontend-kasir-apotek-vuejs",
 		desc: {
 			short: "Frontend kasir apotek ini dibuat menggunakan Vue.js dan Tailwind CSS",
