@@ -1,6 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@utility container {
+	margin-inline: auto;
+	padding: 1rem;
+	@variant 2xl {
+		max-width: 1400px;
+	}
+}
+
+@theme {
+	--font-sans: "Inter", sans-serif;
+	--font-mono: "Geist Mono";
+}
 
 body {
 	@apply bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-200;
@@ -11,5 +24,25 @@ body {
 }
 
 .badge {
-	@apply rounded-sm bg-neutral-900 px-3 py-0.5 text-center text-xs font-medium capitalize text-neutral-200 dark:bg-neutral-100 dark:text-neutral-900;
+	@apply rounded-sm bg-neutral-900 px-3 py-0.5 text-center text-xs font-medium text-neutral-200 capitalize dark:bg-neutral-100 dark:text-neutral-900;
+}
+
+#site-heading {
+	@apply text-neutral-200;
+}
+
+#site-heading .link {
+	@apply text-neutral-200 hover:text-neutral-100;
+}
+
+#site-heading .badge {
+	@apply border border-neutral-200 bg-transparent text-neutral-200;
+}
+
+.rectangle {
+	@apply absolute -top-[360px] -left-[275px] h-[980px] w-[2000px] rotate-[350deg] md:h-[1000px];
+}
+
+.rectangle-2 {
+	@apply absolute -top-[348px] -left-[268px] h-[1130px] w-[2000px] rotate-[10deg] md:h-[1000px] lg:h-[850px];
 }
