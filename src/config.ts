@@ -19,7 +19,7 @@ export const SITE_LOCALE = {
 	author: "site.author",
 	shortDescription: "site.shortDescription",
 	description: "site.description",
-	positions: ["position.backend_develover", "position.data_scientist"]
+	positions: ["position.backend_developer", "position.data_scientist"],
 } as const;
 
 export const LINKS: Link[] = [

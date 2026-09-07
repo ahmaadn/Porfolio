@@ -6,11 +6,11 @@ const projects = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
 	schema: ({ image }) =>
 		z.object({
-			title: z.string(),
+			title: z.object({ en: z.string(), id: z.string() }),
 			tags: z.array(z.string()),
 			url: z.string().url().optional(),
 			preview: z.string().url().optional(),
-			description: z.string(),
+			description: z.object({ en: z.string(), id: z.string() }),
 			date: z.string().transform((str) => new Date(str)),
 			thumbnail: image(),
 			image: z.string().optional(),

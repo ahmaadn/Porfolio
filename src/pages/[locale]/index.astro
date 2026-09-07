@@ -12,7 +12,7 @@ import InView from "@/components/motions/InView.astro";
 import Stagger from "@/components/motions/Stagger.astro";
 import StaggerItem from "@/components/motions/StaggerItem.astro";
 import { EDUCATION, SITE, SITE_LOCALE, SKILL_CATEGORIES } from "@/config";
-import { getLangFromUrl, useTranslation } from "@/i18n/utils";
+import { getLangFromUrl, getLocalizedPath, useTranslation } from "@/i18n/utils";
 import Layout from "@/layouts/layout.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
@@ -28,13 +28,13 @@ const allProject = (await getCollection("projects")).sort(
 let latestProject =
 	allProject.filter((project) => project.data.latest || false)[0] || allProject[0];
 
-let newProjects = allProject.slice(0, 3).map((project) => project.data);
+const newProjects = allProject.slice(0, 3);
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslation(lang);
 ---
 
-<Layout title="me" description={t(SITE_LOCALE.shortDescription) as string}>
+<Layout title={t("home.meta.title")} description={t(SITE_LOCALE.shortDescription) as string}>
 	<SiteHeading id="site-heading">
 		<div
 			class="relative z-10 mx-auto flex h-full max-w-6xl flex-col items-start px-6 pt-32 pb-28 md:justify-center md:pt-24 lg:pt-0">
@@ -48,7 +48,8 @@ const t = useTranslation(lang);
 						<StaggerItem
 							as="h1"
 							class="text-content mb-2 text-4xl font-bold capitalize md:text-7xl">
-							I'm {SITE.author}
+							{t("home.hero.greeting")}
+							{SITE.author}
 						</StaggerItem>
 						<StaggerItem
 							as="h2"
@@ -68,24 +69,24 @@ const t = useTranslation(lang);
 							<Button
 								as="a"
 								url="#project"
-								label="View My Work"
+								label={t("common.button.view_work")}
 								icon="ri:arrow-down-line"
 								variant="invert"
 							/>
 							<Button
 								as="a"
-								url="./resume.pdf"
-								label="Resume"
+								url="/resume.pdf"
+								label={t("common.button.resume")}
 								icon="ri:file-text-line"
 								variant="basic"
-								download="./resume.pdf"
+								download="/resume.pdf"
 							/>
 						</StaggerItem>
 					</Stagger>
 				</div>
 				<Stagger animation="fade-up" staggerDelay={0.12}>
 					<StaggerItem>
-						<LatestProject project={latestProject.data} />
+						<LatestProject project={latestProject.data} label={t("home.latest_project")} />
 					</StaggerItem>
 				</Stagger>
 			</div>
@@ -94,8 +95,8 @@ const t = useTranslation(lang);
 	<main id="main-content" class="relative mb-20 min-h-screen w-full space-y-20 md:space-y-24">
 		<BaseContent
 			id="me"
-			title="About me"
-			background-text="About me"
+			title={t("home.section.about")}
+			background-text={t("home.section.about")}
 			icon-title="ri:compasses-2-line">
 			<div class="flex flex-col gap-y-8 md:flex-row">
 				<Avatar />
@@ -106,8 +107,8 @@ const t = useTranslation(lang);
 		</BaseContent>
 		<BaseContent
 			id="skills"
-			title="Tech Stack"
-			background-text="Tech Stack"
+			title={t("home.section.tech_stack")}
+			background-text={t("home.section.tech_stack")}
 			icon-title="ri:code-s-slash-line">
 			<div class="grid gap-8 sm:grid-cols-2">
 				{
@@ -117,7 +118,15 @@ const t = useTranslation(lang);
 								<div class="text-content inline-flex items-center gap-2">
 									<Icon name={catIcon} class="h-5 w-5 opacity-60" />
 									<h3 class="text-sm font-semibold tracking-wider uppercase">
-										{category}
+										{t(
+											category === "Languages"
+												? "home.skill.languages"
+												: category === "Frameworks"
+													? "home.skill.frameworks"
+													: category === "Data & ML"
+														? "home.skill.data_ml"
+														: "home.skill.databases"
+										)}
 									</h3>
 								</div>
 								<div class="flex flex-wrap gap-2">
@@ -133,8 +142,8 @@ const t = useTranslation(lang);
 		</BaseContent>
 		<BaseContent
 			id="education"
-			title="Educations"
-			background-text="Education"
+			title={t("home.section.education")}
+			background-text={t("home.section.education")}
 			class="flex flex-col md:flex-row md:gap-x-16"
 			icon-title="ri:school-line">
 			<ol class="w-full space-y-12 overflow-hidden">
@@ -152,12 +161,16 @@ const t = useTranslation(lang);
 								<div class="block w-full space-y-2">
 									<div>
 										<time class="text-sm/none font-medium">
-											{edu.from} - {edu.to}
+											{edu.from} - {edu.to === "Now" ? t("home.education.now") : edu.to}
 										</time>
 
 										<h3 class="text-content mt-1 text-2xl font-bold">{edu.institute}</h3>
 										<p class="mt-2 text-base">{edu.location}</p>
-										<p class="text-base">{edu.course}</p>
+										<p class="text-base">
+											{edu.course === "Teknik Informatika"
+												? t("home.education.informatics")
+												: t("home.education.networking")}
+										</p>
 									</div>
 								</div>
 							</div>
@@ -168,16 +181,19 @@ const t = useTranslation(lang);
 		</BaseContent>
 		<BaseContent
 			id="project"
-			title="Projects"
+			title={t("home.section.projects")}
 			class="relative"
-			background-text="Project"
+			background-text={t("home.section.projects")}
 			icon-title="ri:bnb-line">
 			<div class="flex flex-col gap-8 md:grid md:grid-cols-2 lg:grid-cols-3">
 				{
 					newProjects &&
 						newProjects.map((project, i) => (
 							<InView animation="fade-up" delay={i * 0.12}>
-								<ProjectCard project={project} />
+								<ProjectCard
+									project={project.data}
+									sourceCodeLabel={t("common.button.source_code")}
+								/>
 							</InView>
 						))
 				}
@@ -185,7 +201,7 @@ const t = useTranslation(lang);
 			<div class="mt-12 flex items-center justify-center">
 				<Button
 					as="a"
-					url="/projects"
+					url={getLocalizedPath("/projects", lang)}
 					label={t("common.button.view_all")}
 					variant="basic"
 					class="text-base font-normal"

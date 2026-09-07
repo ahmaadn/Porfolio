@@ -11,7 +11,7 @@ if (!(lang in ui)) lang = defaultLang;
 const t = useTranslation(lang);
 ---
 
-<Layout title="404">
+<Layout title="404" description={t("404.description")}>
 	<main class="relative h-dvh overflow-hidden py-14 md:py-20">
 		<!-- Subtle grid background -->
 		<div class="bg-grid absolute inset-0 opacity-50"></div>
